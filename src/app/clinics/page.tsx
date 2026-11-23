@@ -27,10 +27,10 @@ export default function ClinicsIndex() {
               where to check each clinic’s registration. Select any two to
               compare the full terms side by side.
             </p>
-            <p className={styles.checked}>
-              Fees checked <time dateTime="2026-11-23">{feesChecked}</time>
-            </p>
           </div>
+          <p className={styles.checked}>
+            Fees checked <time dateTime="2026-11-23">{feesChecked}</time>
+          </p>
           <div className={styles.heroArt}>
             <Image
               src="/images/sections/clinic-directory.webp"

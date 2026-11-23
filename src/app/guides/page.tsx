@@ -15,8 +15,10 @@ export default function GuidesIndex() {
     <>
       <header className={styles.mast}>
         <div className={`site-wrap ${styles.mastInner}`}>
-          <p className="eyebrow">Patient guides</p>
-          <h1>Your guide to UK clinic care</h1>
+          <div>
+            <p className="eyebrow">Patient guides</p>
+            <h1>Your guide to UK clinic care</h1>
+          </div>
           <p className={styles.intro}>
             From comparing two fee schedules to arranging a handover between
             clinics, find the guide for the decision in front of you.
@@ -38,20 +40,21 @@ export default function GuidesIndex() {
             id={topic.id}
             aria-labelledby={`heading-${topic.id}`}
           >
-            <div>
-              <div className={styles.groupArt}>
-                <Image
-                  src={topic.image}
-                  alt=""
-                  width={720}
-                  height={480}
-                  sizes="(max-width: 760px) 75vw, 30vw"
-                />
+            <header className={styles.groupHeading}>
+              <div className={styles.groupCopy}>
+                <h2 id={`heading-${topic.id}`}>{topic.title}</h2>
+                <p className={styles.groupDescription}>{topic.intro}</p>
               </div>
-              <h2 id={`heading-${topic.id}`}>{topic.title}</h2>
-              <p className={styles.groupDescription}>{topic.intro}</p>
-            </div>
-            <ul>
+              <Image
+                className={styles.groupArt}
+                src={topic.image}
+                alt=""
+                width={720}
+                height={480}
+                sizes="(max-width: 760px) 30vw, 17rem"
+              />
+            </header>
+            <ul className={styles.guideList}>
               {guides
                 .filter((guide) => guide.topic === topic.id)
                 .map((guide) => (

@@ -38,8 +38,8 @@ export default async function GuidePage({ params }: Props) {
                 {guide.kicker} · {guide.readTime}
               </p>
               <h1>{guide.title}</h1>
-              <p className={styles.intro}>{guide.intro}</p>
             </div>
+            <p className={styles.intro}>{guide.intro}</p>
             <Image
               src={`/images/guides/${guide.slug}.webp`}
               alt=""

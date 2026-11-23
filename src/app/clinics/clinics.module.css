@@ -10,12 +10,20 @@
 .heroGrid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(11rem, 19rem);
-  align-items: center;
-  gap: 3rem;
+  grid-template-areas: "copy art" "date art";
+  align-items: end;
+  gap: 0 2rem;
+}
+.heroGrid > div:first-child {
+  grid-area: copy;
+}
+.heroGrid > .checked {
+  grid-area: date;
 }
 .heroArt {
   align-self: end;
-  margin-bottom: calc(0.8rem - clamp(2rem, 4vw, 4rem) - 1.6rem);
+  grid-area: art;
+  margin-bottom: calc(0rem - clamp(2rem, 4vw, 4rem));
   position: relative;
 }
 .heroArt img {
@@ -357,15 +365,20 @@
   .wrap {
     width: calc(100% - 2.5rem);
   }
-  .heroGrid,
   .profile {
     grid-template-columns: 1fr;
   }
   .heroGrid {
-    gap: 0.5rem;
+    grid-template-columns: minmax(0, 1fr) minmax(6rem, 36%);
+    grid-template-areas: "copy copy" "date art";
+    gap: 0.55rem 1rem;
+  }
+  .heroGrid > .checked {
+    align-self: center;
+    margin: 0;
   }
   .heroArt {
-    width: min(50%, 12rem);
+    width: 100%;
     margin-left: auto;
   }
   .toolbar {

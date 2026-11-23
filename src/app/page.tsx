@@ -100,7 +100,7 @@ export default function Home() {
                   src={`/images/home/${path.image}.webp`}
                   width={720}
                   height={480}
-                  sizes="(max-width: 720px) 36vw, 32vw"
+                  sizes="(max-width: 450px) 40vw, (max-width: 900px) 180px, (max-width: 1280px) 13vw, 150px"
                   alt=""
                 />
               </div>

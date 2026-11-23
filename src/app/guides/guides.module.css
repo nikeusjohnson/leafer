@@ -3,7 +3,11 @@
   border-bottom: 1px solid #cedfd2;
 }
 .mastInner {
-  padding-block: clamp(2.6rem, 5vw, 4.75rem);
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: end;
+  column-gap: clamp(2rem, 6vw, 6rem);
+  padding-block: clamp(2rem, 4vw, 3.6rem) 1.3rem;
 }
 .mast h1,
 .articleHeader h1 {
@@ -23,6 +27,9 @@
   color: #40594c;
 }
 .topicNav {
+  grid-column: 1 / -1;
+  padding-top: 1rem;
+  border-top: 1px solid #c0d8c9;
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
@@ -43,53 +50,70 @@
   background: #cdeacf;
 }
 .group {
-  display: grid;
-  grid-template-columns: minmax(15rem, 0.85fr) minmax(0, 1.45fr);
-  gap: clamp(2rem, 5vw, 5rem);
-  padding-block: clamp(2.3rem, 4vw, 3.9rem);
-  align-items: start;
-  scroll-margin-top: 1rem;
+  --chapter-wash: #edf6ed;
+  padding-block: clamp(1.6rem, 3vw, 2.7rem) 0.7rem;
+  scroll-margin-top: 0.6rem;
 }
-.group + .group {
-  border-top: 1px solid #d3dfd5;
+.group:nth-child(2) {
+  --chapter-wash: #fdf1e5;
 }
-.groupArt {
+.group:nth-child(3) {
+  --chapter-wash: #f2edf8;
+}
+.group:last-child {
+  padding-bottom: 3rem;
+}
+.groupHeading {
   position: relative;
   isolation: isolate;
-  width: min(100%, 22rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(11rem, 26%);
+  align-items: end;
+  gap: 1.5rem;
+  padding-inline: clamp(1.2rem, 3.5vw, 3rem);
+  border-bottom: 1px solid #cbdcd0;
 }
-.groupArt::before {
+.groupHeading::before {
   content: "";
   position: absolute;
+  inset: 12% 0 0;
   z-index: -1;
-  inset: 23% 2% 0;
-  border-radius: 53% 47% 26% 22% / 72% 65% 31% 28%;
-  background: #e2f1e3;
+  background: var(--chapter-wash);
+  border-radius: 1.1rem 56% 0 0 / 1.1rem 2.8rem 0 0;
 }
-.group:nth-of-type(2) .groupArt::before {
-  background: #fff0d9;
+.groupCopy {
+  padding-block: 2rem 1.25rem;
 }
-.group:nth-of-type(3) .groupArt::before {
-  background: #efe8fb;
-}
-.groupArt img {
+.groupArt {
+  display: block;
+  justify-self: center;
   width: 100%;
-  height: auto;
+  max-width: 15rem;
+  height: clamp(8.5rem, 12vw, 11rem);
   object-fit: contain;
+  object-position: center bottom;
 }
 .group h2,
 .related h2 {
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-size: clamp(1.65rem, 3vw, 2.6rem);
   font-weight: 800;
   letter-spacing: -0.05em;
   line-height: 1.08;
-  margin-top: 1rem;
 }
 .groupDescription {
-  margin-top: 0.7rem;
+  margin-top: 0.5rem;
   color: #435c4d;
   line-height: 1.55;
-  max-width: 40ch;
+  max-width: 52ch;
+}
+.guideList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(1.4rem, 4vw, 3.6rem);
+  padding-inline: clamp(1.2rem, 3.5vw, 3rem);
+}
+.guideList li {
+  display: grid;
 }
 .guideRow {
   display: flex;
@@ -141,20 +165,27 @@
 }
 .articleLead {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(14rem, 0.72fr);
-  gap: 3rem;
-  align-items: center;
-  padding-block: 2.5rem 3rem;
+  grid-template-columns: minmax(0, 1.5fr) minmax(12rem, 0.75fr);
+  grid-template-areas: "heading art" "intro art";
+  align-items: end;
+  column-gap: clamp(1rem, 4vw, 3.25rem);
+  padding-top: clamp(1.5rem, 3vw, 2.6rem);
+}
+.articleLead > div {
+  grid-area: heading;
+}
+.articleLead .intro {
+  grid-area: intro;
+  align-self: start;
+  margin: 0.8rem 0 2rem;
 }
 .articleLead img {
+  grid-area: art;
+  justify-self: center;
   width: 100%;
-  height: auto;
   max-height: 16rem;
   object-fit: contain;
   object-position: center bottom;
-  align-self: end;
-  margin-bottom: -3.65rem;
-  position: relative;
 }
 .articleHeader h1 {
   max-width: 19ch;
@@ -201,23 +232,51 @@
   margin-top: 0.8rem;
 }
 @media (max-width: 760px) {
-  .group,
+  .mastInner {
+    grid-template-columns: 1fr;
+  }
+  .mastInner .intro {
+    margin-top: 0.75rem;
+  }
+  .topicNav {
+    margin-top: 1rem;
+  }
+  .groupHeading {
+    grid-template-columns: minmax(0, 1fr) minmax(5.3rem, 29%);
+    gap: 0.35rem;
+    padding-inline: 0.8rem 0.15rem;
+  }
+  .groupCopy {
+    padding-block: 1.45rem 0.9rem;
+  }
+  .groupHeading::before {
+    inset: 0.6rem 0 0;
+    border-top-right-radius: 2.5rem;
+  }
+  .groupArt {
+    max-height: 7.5rem;
+  }
+  .guideList {
+    grid-template-columns: 1fr;
+    padding-inline: 0.8rem;
+  }
   .readLayout {
     grid-template-columns: 1fr;
     gap: 1.35rem;
   }
-  .groupArt {
-    width: min(80%, 17rem);
-  }
   .articleLead {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding-block: 1.8rem;
+    grid-template-columns: minmax(0, 1fr) minmax(5.3rem, 31%);
+    grid-template-areas: "heading heading" "intro art";
+    gap: 0.55rem 0.65rem;
+    padding-top: 1.35rem;
+  }
+  .articleLead .intro {
+    font-size: 1rem;
+    line-height: 1.52;
+    margin: 0.1rem 0 1.2rem;
   }
   .articleLead img {
-    width: min(72%, 16rem);
     max-height: 9.5rem;
-    margin: 0 0 -2.3rem auto;
   }
   .contents {
     position: static;
