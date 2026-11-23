@@ -60,7 +60,7 @@ export default function Home() {
           <div className="hero-illustration">
             <Image
               priority
-              src="/images/comparing-clinics.webp"
+              src="/images/clinic-comparison-table.webp"
               width={1152}
               height={768}
               sizes="(max-width: 720px) 92vw, 48vw"
