@@ -266,7 +266,7 @@
 .path-card {
   border: 1px solid #d7e4db;
   border-radius: 1.15rem;
-  overflow: hidden;
+  overflow: visible;
   background: white;
   box-shadow: 0 3px 0 #104b3609;
   transition:
@@ -282,10 +282,18 @@
   text-underline-offset: 3px;
 }
 .path-image {
-  height: clamp(8rem, 13vw, 11.4rem);
   display: grid;
-  place-items: center;
-  overflow: hidden;
+  place-items: end center;
+  position: relative;
+  isolation: isolate;
+}
+.path-image::before {
+  content: "";
+  position: absolute;
+  inset: 19% 6% 0;
+  z-index: -1;
+  border-radius: 60% 45% 28% 37% / 65% 66% 32% 35%;
+  background: var(--art-wash);
 }
 .path-image img {
   width: 100%;
@@ -586,18 +594,19 @@
 .path-image {
   height: auto;
   aspect-ratio: 1.8;
+  margin-top: -0.9rem;
 }
 .path-image img {
   object-fit: contain;
 }
-.path-card:nth-child(1) .path-image {
-  background: #defce9;
+.path-card:nth-child(1) {
+  --art-wash: #defce9;
 }
-.path-card:nth-child(2) .path-image {
-  background: #feb899;
+.path-card:nth-child(2) {
+  --art-wash: #feb899;
 }
-.path-card:nth-child(3) .path-image {
-  background: #e6bcef;
+.path-card:nth-child(3) {
+  --art-wash: #e6bcef;
 }
 .price-section {
   background: #edf3d8;
@@ -704,6 +713,7 @@
   }
   .path-image {
     aspect-ratio: auto;
+    margin: -0.32rem 0 0 -0.32rem;
     min-height: 7rem;
     align-self: stretch;
   }

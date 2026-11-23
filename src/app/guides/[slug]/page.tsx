@@ -41,7 +41,7 @@ export default async function GuidePage({ params }: Props) {
               <p className={styles.intro}>{guide.intro}</p>
             </div>
             <Image
-              src={topic.image}
+              src={`/images/guides/${guide.slug}.webp`}
               alt=""
               width={720}
               height={480}

@@ -10,19 +10,19 @@ const paths = [
     href: "/eligibility",
     title: "Could a clinic assess me?",
     text: "Use the eligibility checklist to prepare for a clinical discussion.",
-    image: "preparing-a-checklist",
+    image: "checklist",
   },
   {
     href: "/guides/costs",
     title: "What will I pay?",
     text: "Work out which fees are one-off, which recur and what costs extra.",
-    image: "checking-clinic-fees",
+    image: "costs",
   },
   {
     href: "/guides/first-consultation",
     title: "What should I take?",
     text: "Gather the records and questions for your first appointment.",
-    image: "appointment-discussion",
+    image: "consultation",
   },
 ];
 
@@ -60,7 +60,7 @@ export default function Home() {
           <div className="hero-illustration">
             <Image
               priority
-              src="/images/clinic-comparison-table.webp"
+              src="/images/home/hero.webp"
               width={1152}
               height={768}
               sizes="(max-width: 720px) 92vw, 48vw"
@@ -97,7 +97,7 @@ export default function Home() {
             <Link key={path.href} href={path.href} className="path-card">
               <div className="path-image">
                 <Image
-                  src={`/images/${path.image}.webp`}
+                  src={`/images/home/${path.image}.webp`}
                   width={720}
                   height={480}
                   sizes="(max-width: 720px) 36vw, 32vw"

@@ -7,7 +7,7 @@ export const guideTopics = [
     short: "Choosing a clinic",
     intro:
       "Compare fees, check the service behind a name and plan a move between clinics.",
-    image: "/images/checking-clinic-fees.webp",
+    image: "/images/sections/choosing-care.webp",
     next: { label: "Compare clinic fees", href: "/clinics" },
   },
   {
@@ -16,7 +16,7 @@ export const guideTopics = [
     short: "Appointments and records",
     intro:
       "Gather the documents, questions and treatment history your clinician needs.",
-    image: "/images/preparing-a-checklist.webp",
+    image: "/images/sections/appointment-prep.webp",
     next: { label: "Open the eligibility checklist", href: "/eligibility" },
   },
   {
@@ -25,7 +25,7 @@ export const guideTopics = [
     short: "Life with a prescription",
     intro:
       "Find guidance on medicine reviews, everyday activities and reporting a problem.",
-    image: "/images/appointment-discussion.webp",
+    image: "/images/sections/ongoing-care.webp",
     next: { label: "Read patient questions", href: "/faq" },
   },
 ] as const;

@@ -39,14 +39,15 @@ export default function GuidesIndex() {
             aria-labelledby={`heading-${topic.id}`}
           >
             <div>
-              <Image
-                className={styles.groupArt}
-                src={topic.image}
-                alt=""
-                width={720}
-                height={480}
-                sizes="(max-width: 760px) 100vw, 35vw"
-              />
+              <div className={styles.groupArt}>
+                <Image
+                  src={topic.image}
+                  alt=""
+                  width={720}
+                  height={480}
+                  sizes="(max-width: 760px) 75vw, 30vw"
+                />
+              </div>
               <h2 id={`heading-${topic.id}`}>{topic.title}</h2>
               <p className={styles.groupDescription}>{topic.intro}</p>
             </div>

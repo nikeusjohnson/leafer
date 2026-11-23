@@ -17,4 +17,4 @@ The directory in `src/data/clinics.ts` supplies the cards, fee table, clinic pro
 
 For each clinic, record the provider’s published fee schedule, what the starting fee covers, ongoing charges, the name on the relevant regulator’s register, and the register URL. Update the checked date after reviewing the entries. Keep medicines separate from clinic fees. Preserve renamed services with a redirect and use a status page for a withdrawn listing.
 
-Patient guides, condition pages and FAQs live under `src/data`. Bespoke illustrations are in `public/images`. DM Sans is bundled with its licence in `src/app/fonts`.
+Patient guides, condition pages and FAQs live under `src/data`. Bespoke illustrations are in `public/images`. Each patient guide uses its own transparent WebP at `public/images/guides/<guide-slug>.webp`. DM Sans is bundled with its licence in `src/app/fonts`.

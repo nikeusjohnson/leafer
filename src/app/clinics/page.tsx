@@ -33,10 +33,10 @@ export default function ClinicsIndex() {
           </div>
           <div className={styles.heroArt}>
             <Image
-              src="/images/checking-clinic-fees.webp"
+              src="/images/sections/clinic-directory.webp"
               width={720}
               height={480}
-              sizes="(max-width: 760px) 0px, 22vw"
+              sizes="(max-width: 760px) 12rem, 22vw"
               alt=""
             />
           </div>

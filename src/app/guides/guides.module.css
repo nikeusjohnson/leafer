@@ -54,11 +54,28 @@
   border-top: 1px solid #d3dfd5;
 }
 .groupArt {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 22rem);
+}
+.groupArt::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 23% 2% 0;
+  border-radius: 53% 47% 26% 22% / 72% 65% 31% 28%;
+  background: #e2f1e3;
+}
+.group:nth-of-type(2) .groupArt::before {
+  background: #fff0d9;
+}
+.group:nth-of-type(3) .groupArt::before {
+  background: #efe8fb;
+}
+.groupArt img {
   width: 100%;
-  aspect-ratio: 1.9;
-  object-fit: cover;
-  border-radius: 1rem;
-  background: #e5eee8;
+  height: auto;
+  object-fit: contain;
 }
 .group h2,
 .related h2 {
@@ -131,9 +148,13 @@
 }
 .articleLead img {
   width: 100%;
-  aspect-ratio: 1.55;
-  object-fit: cover;
-  border-radius: 1.25rem;
+  height: auto;
+  max-height: 16rem;
+  object-fit: contain;
+  object-position: center bottom;
+  align-self: end;
+  margin-bottom: -3.65rem;
+  position: relative;
 }
 .articleHeader h1 {
   max-width: 19ch;
@@ -186,9 +207,7 @@
     gap: 1.35rem;
   }
   .groupArt {
-    max-height: 13rem;
-    object-fit: contain;
-    background: #edf4ee;
+    width: min(80%, 17rem);
   }
   .articleLead {
     grid-template-columns: 1fr;
@@ -196,9 +215,9 @@
     padding-block: 1.8rem;
   }
   .articleLead img {
-    max-width: 19rem;
-    max-height: 10rem;
-    object-fit: cover;
+    width: min(72%, 16rem);
+    max-height: 9.5rem;
+    margin: 0 0 -2.3rem auto;
   }
   .contents {
     position: static;
