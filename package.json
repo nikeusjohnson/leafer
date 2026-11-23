@@ -4,7 +4,7 @@
   "private": true,
   "description": "Leafer — plain-English, independent guidance on medical cannabis in the UK.",
   "scripts": {
-    "dev": "next dev",
+    "dev": "node scripts/dev-wrapper.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
