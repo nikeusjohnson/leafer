@@ -1,36 +1,31 @@
 import type { Metadata } from "next";
-import Eyebrow from "@/components/Eyebrow";
 import EligibilityChecker from "@/components/EligibilityChecker";
 
 export const metadata: Metadata = {
-  title: "Eligibility checker",
+  title: "Eligibility checklist",
   description:
-    "A free, one-minute checker to see whether you're likely to qualify for a UK medical cannabis consultation. No sign-up, no email required.",
+    "Get ready to discuss eligibility with a UK clinic. Consider your history, records and questions before booking.",
 };
 
 export default function Eligibility() {
   return (
     <section className="mx-auto max-w-site px-5 py-14 md:px-8 md:py-20">
       <div className="mx-auto max-w-2xl text-center">
-        <div className="flex justify-center">
-          <Eyebrow label="Free · One minute · No sign-up" />
-        </div>
-        <h1 className="headline mt-5 text-[40px] leading-[1.08] md:text-[52px]">
-          Do you <em>qualify?</em>
+        <p className="eyebrow">Before you book</p>
+        <h1 className="headline mt-4 text-[40px] leading-[1.04] md:text-[56px]">
+          Eligibility checklist
         </h1>
-        <p className="mx-auto mt-5 max-w-lg text-[17px] leading-[1.7] text-ink-soft">
-          Three quick questions. We don&apos;t store your answers, we
-          don&apos;t want your email, and the result is guidance — not a
-          medical decision.
+        <p className="mx-auto mt-5 max-w-xl text-[18px] leading-relaxed text-ink-soft">
+          Answer three questions about your location, diagnosis and treatment
+          history. Get practical next steps for discussing eligibility with a
+          clinician.
         </p>
       </div>
-      <div className="mt-12">
+      <div className="mt-10">
         <EligibilityChecker />
       </div>
-      <p className="mx-auto mt-10 max-w-2xl text-center text-[13px] leading-relaxed text-ink-muted">
-        This checker is a rough guide based on the criteria UK clinics commonly
-        apply. Only a GMC-registered specialist can decide whether
-        cannabis-based medicine is appropriate for you.
+      <p className="mx-auto mt-6 max-w-xl text-center text-[14px] text-ink-muted">
+        Your answers stay in this browser session.
       </p>
     </section>
   );

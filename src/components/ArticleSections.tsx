@@ -1,57 +1,60 @@
+import Link from "next/link";
+
+export type Source = { label: string; href: string };
 export type Section = {
   heading?: string;
   paragraphs?: string[];
   bullets?: string[];
   callout?: string;
+  sources?: Source[];
 };
 
 export default function ArticleSections({ sections }: { sections: Section[] }) {
   return (
-    <div className="space-y-10">
-      {sections.map((s, i) => (
-        <section key={i}>
-          {s.heading && (
-            <h2 className="headline text-[26px] leading-snug md:text-[30px]">
-              {s.heading}
+    <div className="max-w-3xl space-y-9">
+      {sections.map((section, index) => (
+        <section key={section.heading ?? index}>
+          {section.heading && (
+            <h2 className="headline text-[26px] leading-tight md:text-[32px]">
+              {section.heading}
             </h2>
           )}
-          {s.paragraphs?.map((p, j) => (
+          {section.paragraphs?.map((paragraph) => (
             <p
-              key={j}
-              className="mt-4 max-w-prose2 text-[17px] leading-[1.75] text-ink-soft"
+              key={paragraph}
+              className="mt-4 max-w-prose2 text-[17px] leading-[1.7] text-ink-soft"
             >
-              {p}
+              {paragraph}
             </p>
           ))}
-          {s.bullets && (
-            <ul className="mt-5 max-w-prose2 space-y-3">
-              {s.bullets.map((b, j) => (
-                <li key={j} className="flex gap-3 text-[16px] leading-relaxed text-ink-soft">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 18 18"
-                    fill="none"
-                    aria-hidden="true"
-                    className="mt-1 shrink-0"
-                  >
-                    <path
-                      d="M3 9.5l4 4 8-9"
-                      stroke="#1F6B2A"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  <span>{b}</span>
-                </li>
+          {section.bullets && (
+            <ul className="mt-4 max-w-prose2 list-disc space-y-2 pl-6 text-[16px] leading-relaxed text-ink-soft marker:text-leaf">
+              {section.bullets.map((bullet) => (
+                <li key={bullet}>{bullet}</li>
               ))}
             </ul>
           )}
-          {s.callout && (
-            <aside className="mt-6 max-w-prose2 rounded-2xl border border-line bg-amberTint px-5 py-4">
-              <p className="text-[15px] leading-relaxed text-amber">{s.callout}</p>
+          {section.callout && (
+            <aside className="mt-5 rounded-2xl bg-leaf-tint px-6 py-5 leading-relaxed text-forest">
+              {section.callout}
             </aside>
+          )}
+          {section.sources && (
+            <ul
+              aria-label="Related reading"
+              className="mt-4 flex flex-wrap gap-x-6 gap-y-2"
+            >
+              {section.sources.map((source) => (
+                <li key={source.href}>
+                  <Link
+                    href={source.href}
+                    className="link-underline text-[15px] font-semibold"
+                  >
+                    {source.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           )}
         </section>
       ))}

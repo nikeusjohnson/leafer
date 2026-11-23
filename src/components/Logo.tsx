@@ -4,39 +4,31 @@ export default function Logo({ dark = false }: { dark?: boolean }) {
   return (
     <Link
       href="/"
-      className="group inline-flex items-center gap-2"
-      aria-label="Leafer — home"
+      className={`wordmark${dark ? " wordmark-inverse" : ""}`}
+      aria-label="Leafer home"
     >
       <svg
-        width="26"
-        height="26"
-        viewBox="0 0 26 26"
+        width="38"
+        height="38"
+        viewBox="0 0 40 40"
         fill="none"
         aria-hidden="true"
-        className="shrink-0"
       >
         <path
-          d="M13 24V10"
-          stroke={dark ? "#FFFDF4" : "#143C14"}
-          strokeWidth="1.8"
-          strokeLinecap="round"
+          d="M5 6.5C16 6.4 23.4 11.6 22.1 24.1C10.7 24.5 4.7 17.8 5 6.5Z"
+          fill="currentColor"
         />
         <path
-          d="M13 14C13 14 6.5 13.2 4.2 6.4C11 6.4 13 11.5 13 14Z"
-          fill={dark ? "#FFFDF4" : "#1F6B2A"}
+          d="M35.9 2.7C36.3 12.3 32.3 18.3 23.7 19.6C22.9 11.7 27.1 5.3 35.9 2.7Z"
+          fill="#65B35D"
         />
         <path
-          d="M13 11C13 11 19.5 10.2 21.8 3.4C15 3.4 13 8.5 13 11Z"
-          fill={dark ? "#C5E47D" : "#143C14"}
+          d="M8.2 35.5C12.8 25.7 20.1 21 31.8 19.8C29.9 30.3 21.2 36.4 8.2 35.5Z"
+          fill="currentColor"
         />
       </svg>
-      <span
-        className={`text-[22px] font-extrabold uppercase tracking-[-0.01em] ${
-          dark ? "text-cream" : "text-ink"
-        }`}
-      >
-        Leafer
-        <span className={dark ? "text-cream/50" : "text-ink-muted"}>.co.uk</span>
+      <span>
+        leafer<span className="logo-stop">.</span>
       </span>
     </Link>
   );

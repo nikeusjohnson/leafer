@@ -10,359 +10,346 @@ export type Guide = {
   sections: Section[];
 };
 
+export const references = {
+  nhs: {
+    label: "NHS guide to medical cannabis",
+    href: "https://www.nhs.uk/medicines/medical-cannabis/",
+  },
+  nice: {
+    label: "NICE prescribing recommendations",
+    href: "https://www.nice.org.uk/guidance/ng144/chapter/recommendations",
+  },
+  records: {
+    label: "NHS England guidance on GP records",
+    href: "https://digital.nhs.uk/services/nhs-app/nhs-app-features/gp-health-records-in-the-app",
+  },
+  gmc: {
+    label: "Search the GMC registers",
+    href: "https://www.gmc-uk.org/registers",
+  },
+  law: {
+    label: "Home Office guidance on prescribing",
+    href: "https://www.gov.uk/government/publications/circular-0182018-rescheduling-of-cannabis-based-products-for-medicinal-use-in-humans/rescheduling-of-cannabis-based-products-for-medicinal-use-in-humans-accessible-version",
+  },
+  driving: {
+    label: "GOV.UK drug-driving rules",
+    href: "https://www.gov.uk/drug-driving-law",
+  },
+  travel: {
+    label: "Home Office guidance for travellers",
+    href: "https://www.gov.uk/guidance/controlled-drugs-personal-licences",
+  },
+  fees: { label: "Compare the clinics’ published fees", href: "/clinics" },
+  care: {
+    label: "Care Quality Commission",
+    href: "https://www.cqc.org.uk/care-services",
+  },
+};
+
 export const guides: Guide[] = [
   {
     slug: "costs",
-    title: "What does medical cannabis actually cost?",
+    title: "How to compare clinic fees",
     description:
-      "Consultation fees, prescription costs and the yearly total — with honest ways to keep it down.",
-    kicker: "Cost & pricing",
-    readTime: "6 min read",
+      "Price the first appointment, ongoing care and extras on the same basis.",
+    kicker: "Clinic costs",
+    readTime: "3 min read",
     intro:
-      "Nobody likes vague pricing, so here's the honest picture: private medical cannabis in the UK typically costs somewhere between £1,500 and £4,000 a year all-in. Where you land in that range depends on your clinic, your dose, and the products you're prescribed.",
+      "A clinic might quote by appointment, month or year. To work out what you could pay, ask each clinic to price the same period of care.",
     sections: [
       {
-        heading: "The costs, broken down",
-        bullets: [
-          "Initial consultation: £79–£200 depending on the clinic (a few boutique clinics charge more)",
-          "Follow-up appointments: £50–£75 each, usually every 1–3 months at first, then less often",
-          "Medication: roughly £100–£400 a month, depending on product type (oil, flower, capsules) and dose",
-          "Prescription and dispensing fees: some clinics include these, others charge £10–£30 per prescription",
+        heading: "Start with the first appointment",
+        paragraphs: [
+          "A free screening call and a specialist consultation can be separate appointments. Check which one the advertised fee buys, when payment is due and what happens if the clinic cannot offer treatment.",
         ],
       },
       {
-        heading: "What a typical year looks like",
-        paragraphs: [
-          "In year one, expect an initial consultation (£79–£200), three or four follow-ups (£150–£300), and twelve months of medication. A moderate oil prescription might run £150 a month; a heavier flower prescription could be double that.",
-          "That puts a realistic first-year total between about £1,500 for a careful budget setup and £4,000 or more at the higher end. Year two is usually cheaper, as follow-ups become less frequent.",
+        heading: "Write down a year of clinic fees",
+        bullets: [
+          "Enter the initial fee once. Add the price of each review the clinic expects you to attend.",
+          "For a monthly membership, multiply the monthly charge by the months you expect to be enrolled. Check the minimum term and the cancellation rules.",
+          "Add repeat prescription, delivery and letter fees where they apply. Avoid counting an appointment twice if a membership already covers it.",
         ],
         callout:
-          "Before committing to a clinic, ask for their full fee schedule in writing — consultation fees, follow-ups, prescription fees, and any subscription terms. A reputable clinic will give you this without fuss.",
+          "For example, if a written quote lists a £40 assessment and three £30 reviews, the appointment subtotal is £130. This is an illustration. Medicine, pharmacy charges and any extra reviews would change what you spend.",
       },
       {
-        heading: "Ways to keep costs down",
-        bullets: [
-          "Compare clinics before registering — initial fees alone vary by £100 or more",
-          "Ask about subscription or membership pricing, but do the yearly maths before signing up",
-          "Oils are often cheaper per dose than flower, though they're not interchangeable clinically",
-          "Ask whether your dose can be reviewed downward once your symptoms are stable",
-          "Check whether the clinic charges for repeat prescriptions or letters",
-        ],
-      },
-      {
-        heading: "Is it ever available on the NHS?",
+        heading: "Ask the pharmacy about medicine separately",
         paragraphs: [
-          "Technically yes, practically almost never. NHS prescriptions for cannabis-based medicines are vanishingly rare outside a few specific epilepsy syndromes. For the overwhelming majority of patients, private is the only realistic route — which is exactly why understanding the costs matters.",
+          "The medicine, quantity and dispensing arrangements affect the pharmacy bill. A fee for issuing a prescription pays for a different service from supplying its contents. Ask for an itemised quote before agreeing to pay.",
         ],
+        sources: [
+          references.fees,
+          {
+            label: "Example of published pay-as-you-go terms",
+            href: "https://support.alternaleaf.co.uk/hc/en-gb/articles/40678801698321-How-much-does-a-PAYG-consult-cost",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "checking-a-clinic",
+    title: "How to check a clinic’s registration",
+    description:
+      "Match the service, location and specialist to the public records.",
+    kicker: "Clinic checks",
+    readTime: "3 min read",
+    intro:
+      "Look for the organisation that will actually provide your care. Its registered name may be different from the name at the top of its website.",
+    sections: [
+      {
+        heading: "Match the service to its regulator",
+        paragraphs: [
+          "Start with the country where the service is registered, including for an online appointment. Compare the provider name, service address and current registration with the details on the clinic’s own website. If a record is archived, look for the current location before booking.",
+        ],
+        sources: [
+          references.care,
+          {
+            label: "Healthcare Inspectorate Wales",
+            href: "https://www.hiw.org.uk/",
+          },
+          {
+            label: "Scottish independent healthcare registration",
+            href: "https://www.gov.uk/find-licences/registration-independent-healthcare-service-scotland",
+          },
+          {
+            label: "Northern Ireland RQIA inspections",
+            href: "https://www.rqia.org.uk/inspections/",
+          },
+        ],
+      },
+      {
+        heading: "Read the actual inspection",
+        paragraphs: [
+          "A registration tells you which service the regulator oversees. For an inspection, check the date, what the inspector looked at, any concerns and the provider’s response. A newly registered location may have no published inspection yet.",
+        ],
+      },
+      {
+        heading: "Check who will assess you",
+        paragraphs: [
+          "Ask for the specialist’s full name or GMC number. The doctor’s entry shows registration details and whether they are on the Specialist Register. For a question about a fee or booking term, ask the clinic directly.",
+        ],
+        sources: [references.gmc],
       },
     ],
   },
   {
     slug: "first-consultation",
-    title: "Your first consultation: what to expect",
+    title: "Prepare for a first appointment",
     description:
-      "What the specialist will ask, what records to prepare, and how to get the most from 30 minutes.",
-    kicker: "Consultations",
-    readTime: "5 min read",
+      "What to gather and what to ask before paying for a consultation.",
+    kicker: "Appointments",
+    readTime: "2 min read",
     intro:
-      "A first consultation usually lasts 20 to 45 minutes and happens over video. It's a proper medical appointment, not a formality — but there's no reason to be nervous if you come prepared.",
+      "Start by asking the clinic which records it needs, who will see you and how long the appointment will last.",
     sections: [
       {
-        heading: "Before the appointment",
-        paragraphs: [
-          "The clinic will ask for access to your medical records. Usually that means either a summary care record from your GP or clinic-requested records with your consent. Some clinics handle the whole thing; others ask you to request a copy yourself. Either way, start this early — GP surgeries can take a week or two.",
-        ],
+        heading: "Gather the relevant records",
         bullets: [
-          "Gather a list of everything you currently take, including doses",
-          "Note down the treatments you've already tried and what happened",
-          "Write a short, honest summary of how your condition affects your daily life",
-          "Think about what you'd want treatment to achieve — better sleep, less pain, fewer attacks",
+          "Ask which documents the clinic accepts and how to share them securely.",
+          "Write down previous treatments, dates where you know them, and why each was changed or stopped.",
+          "Bring a list of current prescriptions, supplements, allergies and the questions you want answered.",
         ],
+        sources: [references.records],
       },
       {
-        heading: "During the appointment",
+        heading: "Use the appointment to make a decision",
         paragraphs: [
-          "The specialist will go through your history, your diagnosis, and your previous treatments. They'll ask about your symptoms in detail and about anything that might make cannabis-based medicines unsuitable — a history of psychosis, certain heart conditions, pregnancy, or problematic substance use.",
-          "If they think treatment is appropriate, they'll explain the options — typically starting with a low dose — and a multidisciplinary team at the clinic confirms the prescription. If they don't think it's right for you, a good clinic will say so plainly rather than sell you false hope.",
+          "Ask what other treatments could suit your circumstances, how the clinician would judge any benefit and how you would contact the team about side effects. The specialist may suggest another approach. Agree who will send a summary and when you should hear back.",
         ],
-      },
-      {
-        heading: "Afterwards",
-        paragraphs: [
-          "If prescribed, your prescription goes to a licensed pharmacy, which dispenses and delivers it — usually within two to five working days. You'll have a follow-up booked, typically within a month, to see how you're getting on and adjust the dose if needed.",
-          "Your clinic will normally write to your GP to keep your records straight. That's good practice, not something to worry about.",
-        ],
-        callout:
-          "You're allowed to ask anything. 'Why this product?', 'What side effects should I expect?', 'What's the total monthly cost?' — a good specialist will welcome the questions.",
+        sources: [references.nice],
       },
     ],
   },
   {
     slug: "driving",
-    title: "Driving and medical cannabis: the honest picture",
+    title: "Driving with a prescription",
     description:
-      "What UK drug-driving law actually says, the medical defence, and why caution is still the sensible default.",
-    kicker: "Legal & driving",
-    readTime: "5 min read",
+      "Understand impairment, prescribed medicines and the different rules across the UK.",
+    kicker: "Driving",
+    readTime: "2 min read",
     intro:
-      "This is one of the most misunderstood areas of UK medical cannabis law, so let's be direct: having a prescription is not a free pass to drive with THC in your system. Here's how it actually works.",
+      "If medicine affects your ability to drive safely, you must not drive. Ask your prescriber or pharmacist about your particular medicine and when to seek advice again.",
     sections: [
       {
-        heading: "What the law says",
+        heading: "Check the rules where you drive",
         paragraphs: [
-          "UK drug-driving law sets a blood threshold of 2 micrograms of THC per litre. It's an offence to drive over that limit — but there is a statutory medical defence if you're taking the medicine as prescribed and your driving isn't impaired.",
-          "In practice: the medical defence exists, but you'd be relying on it after being stopped, tested, and possibly charged. It's a defence in court, not a shield at the roadside.",
+          "England, Wales and Scotland have specified blood limits for certain drugs. A medical defence may apply to a limit offence where medicine was lawfully prescribed and taken according to the directions. Driving while unfit remains an offence. Northern Ireland has different legislation and driving while unfit can still lead to arrest.",
         ],
-        callout:
-          "THC can stay detectable in blood long after any impairing effect has worn off — sometimes for days with regular use. You could feel completely fine and still test over the limit.",
+        sources: [references.driving],
       },
       {
-        heading: "The sensible approach",
+        heading: "Before taking the wheel",
         bullets: [
-          "Never drive while you feel any effects — drowsiness, slower reactions, altered perception",
-          "Talk to your prescribing specialist about driving before you start treatment",
-          "Carry evidence of your prescription: the dispensing label on your medication and any clinic letter",
-          "Be aware that a roadside saliva test can show positive days after your last dose",
-          "Consider avoiding driving on days you medicate, especially early in treatment",
-        ],
-      },
-      {
-        heading: "Insurance and your licence",
-        paragraphs: [
-          "You should tell your insurer about your prescription — failing to disclose a medical condition or medication could invalidate your policy. You don't automatically need to inform the DVLA unless your condition itself is notifiable, but your specialist can advise on your specific situation.",
+          "Discuss work driving, changes to your prescription and any other medicines with your clinician.",
+          "Keep the dispensing label and a copy of the prescription available as evidence of lawful treatment.",
+          "If you feel drowsy, dizzy or unable to concentrate, arrange another way to travel.",
         ],
       },
     ],
   },
   {
     slug: "travelling",
-    title: "Travelling with a medical cannabis prescription",
+    title: "Taking prescribed medicine abroad",
     description:
-      "Flying abroad, the Schengen certificate, and why 'it's prescribed' doesn't travel well.",
+      "Check each destination and transit country before you travel.",
     kicker: "Travel",
-    readTime: "4 min read",
+    readTime: "2 min read",
     intro:
-      "Here's the uncomfortable truth: your UK prescription is valid in the UK. Many countries treat cannabis as an illegal drug regardless of your paperwork, and some impose severe penalties. Travelling with medical cannabis takes planning — and sometimes the honest answer is 'don't'.",
+      "A UK prescription shows who prescribed your medicine. Permission to enter another country with it depends on the rules there.",
     sections: [
       {
-        heading: "Within the UK",
+        heading: "Check the whole journey",
         paragraphs: [
-          "Travelling domestically with your prescribed medication is fine. Keep it in its original pharmacy packaging with the dispensing label, and carry a copy of your prescription or clinic letter. That applies to trains, domestic flights, and driving (see our driving guide for the THC rules).",
+          "Contact the embassy of each destination and transit country before booking. Give the medicine name, form, quantity and travel dates. Ask whether the medicine is permitted and whether approval, translation or a particular form is required.",
         ],
+        sources: [references.travel],
       },
       {
-        heading: "Travelling abroad",
+        heading: "Get your paperwork together",
         paragraphs: [
-          "Every country sets its own rules, and most don't recognise foreign cannabis prescriptions. Within the Schengen area, a Schengen certificate from the prescriber can allow you to carry certain controlled medicines — but it doesn't cover every product, and several Schengen countries ban THC outright regardless.",
-          "Outside Europe the picture gets riskier. Some countries treat any cannabis possession as a serious criminal offence. Contact the embassy of your destination before you travel, get their answer in writing, and check the rules for any country you're transiting through.",
+          "Ask the clinic early about travel-letter charges and lead times. Keep the original labelled container and the documents required for your route. Check the Home Office guidance for returning to the UK. If carriage is prohibited, discuss your options with your prescriber before travelling.",
         ],
-        callout:
-          "CBD products are not the safe fallback people assume. Some countries ban CBD entirely, and products legally sold in the UK can contain trace THC above other countries' limits.",
-      },
-      {
-        heading: "Practical options",
-        bullets: [
-          "Ask your clinic whether a treatment break or alternative medication is sensible for the trip",
-          "If travel with medication is essential, start the paperwork at least a month ahead",
-          "Carry original packaging, dispensing labels, a clinic letter, and any required certificates",
-          "Never put cannabis-based medicine in checked luggage without confirming airline and destination rules",
-        ],
+        sources: [references.nhs],
       },
     ],
   },
   {
     slug: "flower-vs-oil",
-    title: "Flower vs oil: what's the difference?",
+    title: "Understanding your prescription format",
     description:
-      "The two main prescription formats, how they differ in practice, and what specialists consider.",
-    kicker: "Products",
-    readTime: "5 min read",
+      "Questions about the form, instructions and equipment for a prescribed medicine.",
+    kicker: "Prescription formats",
+    readTime: "2 min read",
     intro:
-      "UK medical cannabis prescriptions come mainly in two forms: dried flower for vaporisation, and oils taken under the tongue. Neither is 'better' — they do different jobs, and many patients end up prescribed a combination.",
+      "The form of a medicine affects how you take it. Written instructions for one product may be inappropriate for another.",
     sections: [
       {
-        heading: "Oils",
+        heading: "Check the dispensing label",
         paragraphs: [
-          "Cannabis oils are taken with a dropper under the tongue and absorbed slowly. Effects take 30 minutes to two hours to arrive and can last six hours or more. That makes oils well suited to steady, all-day symptom control — and to precise dosing, since every drop is measured.",
-          "The slow onset is also the main downside: oils can't help much with sudden breakthrough symptoms, and it's easy to take more too soon because 'nothing's happening yet'.",
+          "Before taking a new medicine, ask the pharmacist to show you how to measure or administer the prescribed amount. For a liquid, check the units on the measuring device and how to store the bottle after opening.",
         ],
       },
       {
-        heading: "Flower",
+        heading: "Ask about equipment and costs",
         paragraphs: [
-          "Prescription flower is vaporised — never smoked. Smoking remains illegal and clinics are explicit about it; a dry-herb vaporiser heats the flower enough to release cannabinoids without burning. Effects arrive within minutes and last one to three hours, which suits breakthrough pain, sudden nausea, or getting to sleep.",
-          "Flower tends to cost more per month than oil, dosing is less precise, and you'll need to buy a vaporiser (typically £50–£300). Some clinics also place limits on monthly flower quantities.",
+          "If the prescription requires a device, ask which device is suitable, how to use and clean it, and whether it is included in the quoted cost. Smoking prescribed cannabis is prohibited. Ask the clinic or pharmacist before changing how you take a medicine.",
         ],
-      },
-      {
-        heading: "How specialists decide",
-        bullets: [
-          "Your symptoms: steady background control (oil) versus fast relief (flower), or both",
-          "Your experience: complete beginners are often started on oil for dosing precision",
-          "Your lifestyle: vaporising at work or in shared housing isn't always practical",
-          "Cost: oils usually work out cheaper per month at equivalent symptom control",
-        ],
-      },
-      {
-        heading: "A note on strength",
-        paragraphs: [
-          "Products vary enormously in THC and CBD content, and higher is not better. Most specialists start patients on low-THC or balanced products and adjust from there. If a clinic's first suggestion is a very high-THC product with no titration plan, that's worth a polite question.",
-        ],
+        sources: [references.law],
       },
     ],
   },
   {
     slug: "cbd-vs-medical-cannabis",
-    title: "CBD from the shops vs medical cannabis",
+    title: "CBD products and prescribed medicines",
     description:
-      "They're not the same thing — and the difference matters for your wallet and your health.",
-    kicker: "Explained",
-    readTime: "4 min read",
+      "What a shop label tells you and what to discuss with your pharmacist.",
+    kicker: "CBD explained",
+    readTime: "2 min read",
     intro:
-      "You can buy CBD oil in any UK high street, yet medical cannabis needs a specialist prescription. Confusing the two costs people money and delays proper treatment — so here's the difference, plainly.",
+      "Some high-street CBD products are sold as foods or supplements. A product with CBD in its name can be quite different from a medicine prescribed for a particular condition.",
     sections: [
       {
-        heading: "Shop-bought CBD",
+        heading: "Check what you already take",
         paragraphs: [
-          "CBD products sold in shops are legally food supplements. They must contain no more than trace THC (1mg per container), they can't make medical claims, and they're not assessed as medicines. Quality varies enormously — independent testing has repeatedly found high-street products containing far less CBD than the label claims.",
-          "For general wellbeing, some people find them helpful and that's fine. But they are not a substitute for prescribed treatment, and at £30–£60 a bottle, the cost of 'giving it a go' adds up fast.",
+          "Tell your pharmacist or specialist about any CBD products you use, alongside your prescriptions and supplements. Take the packaging or a photograph of the ingredients if you are unsure what it contains.",
         ],
       },
       {
-        heading: "Prescription medical cannabis",
-        bullets: [
-          "A regulated medicine, made to pharmaceutical standards with verified contents",
-          "Can contain significant, precisely dosed THC and/or CBD",
-          "Prescribed by a GMC-registered specialist for a diagnosed condition",
-          "Dispensed by a licensed pharmacy, with ongoing clinical oversight",
-        ],
-      },
-      {
-        heading: "So which do you need?",
+        heading: "Why a clinician asks",
         paragraphs: [
-          "If you have a diagnosed condition that's affecting your life and standard treatment hasn't worked, the proper route is a specialist consultation — not the wellness aisle. If you're just curious about CBD for general relaxation, shop products are legal and low-risk, but buy brands that publish independent lab reports.",
-          "One more thing: if you're about to start a prescription, tell the specialist about any CBD you already take. It's a real compound with real interactions, and they'll want it in the picture.",
+          "CBD and THC can interact with other medicines. The NHS also cautions that the ingredients and quality of products bought online can be uncertain. Ask for advice before replacing or combining a prescribed treatment with a shop-bought product.",
         ],
+        sources: [references.nhs],
       },
     ],
   },
   {
     slug: "side-effects",
-    title: "Side effects: what to actually expect",
+    title: "Reporting side effects",
     description:
-      "The honest list — what's common, what's rare, and when to call your clinic.",
-    kicker: "Treatment",
-    readTime: "5 min read",
+      "Who to contact and what information to keep when a medicine causes problems.",
+    kicker: "Follow-up care",
+    readTime: "2 min read",
     intro:
-      "Every medicine has side effects, and medical cannabis is no exception. Most are mild and fade as your body adjusts — but you should know the full picture before you start, not after.",
+      "Before starting a medicine, ask which symptoms need urgent attention and how to reach your clinical team between appointments.",
     sections: [
       {
-        heading: "Common in the first few weeks",
-        bullets: [
-          "Drowsiness or feeling 'foggy' — the most common, usually fades with dose adjustment",
-          "Dry mouth",
-          "Dizziness, especially when standing up",
-          "Increased appetite",
-          "Mild euphoria or feeling 'high' with THC-containing products, mainly at the start",
-        ],
-      },
-      {
-        heading: "Less common but worth knowing",
+        heading: "Keep a short note",
         paragraphs: [
-          "Some people find THC increases anxiety or causes paranoia, particularly at higher doses. Others experience nausea or headaches. If anything feels wrong, the answer is always the same: contact your clinic, don't just push through or quietly stop.",
-          "Tolerance is real too — effects can fade with long-term daily use, which is one reason good clinicians keep doses as low as effective and review regularly.",
+          "Record the name and strength on the label, when you took it, when symptoms started and any other medicines you took. Tell the clinical team about changes in mood, alertness or coordination and ask what to do next.",
         ],
       },
       {
-        heading: "When to contact your clinic promptly",
-        bullets: [
-          "Anxiety, low mood or paranoia that's new or clearly worse",
-          "Heart palpitations or chest discomfort",
-          "Feeling dependent — needing more for the same effect, or unwell without it",
-          "Anything that frightens you. That's what follow-ups are for",
-        ],
-        callout:
-          "If you have a personal or close family history of psychosis, tell the specialist before you start — not after. THC-containing products may be unsuitable, and there are often CBD-dominant alternatives.",
-      },
-      {
-        heading: "A word on dependence",
+        heading: "Getting help",
         paragraphs: [
-          "Cannabis-based medicines can be habit-forming with long-term use, particularly THC-dominant products at higher doses. Used as prescribed — lowest effective dose, regular review, honest conversations with your clinician — the risk is manageable. Stopping suddenly after long daily use can cause a few rough nights and irritability, so taper with your clinic's guidance.",
+          "Seek emergency help for a life-threatening reaction. You can also report suspected side effects through the MHRA Yellow Card scheme. Your pharmacist or prescriber can advise about your own treatment.",
+        ],
+        sources: [
+          references.nhs,
+          {
+            label: "MHRA Yellow Card reporting",
+            href: "https://yellowcard.mhra.gov.uk/",
+          },
         ],
       },
     ],
   },
   {
     slug: "talking-to-your-gp",
-    title: "Talking to your GP about it",
+    title: "Getting the right medical records",
     description:
-      "How to raise medical cannabis with your GP — including when they're sceptical.",
-    kicker: "Your GP",
-    readTime: "4 min read",
+      "Find out what to ask your GP surgery for and how to share it.",
+    kicker: "Your records",
+    readTime: "2 min read",
     intro:
-      "You don't need your GP's permission to get a private prescription — but keeping them in the loop is genuinely good for your care. Here's how to have that conversation, even if you're expecting a raised eyebrow.",
+      "Ask the clinic for a specific list before requesting your records. A list of current prescriptions might leave out a previous treatment or an important specialist letter.",
     sections: [
       {
-        heading: "Why bother telling them?",
+        heading: "Find the relevant dates",
         paragraphs: [
-          "Your GP coordinates everything else about your health. If they don't know you're prescribed a cannabis-based medicine, they can't watch for interactions with other medications, and your records won't reflect what you're actually taking. Clinics will normally write to your GP after prescribing anyway — it lands better when it isn't a surprise.",
+          "In England, recent GP entries may be visible in the NHS App. Older entries or hospital documents may need a separate request. If a letter is missing, check whether your GP surgery or the hospital department holds it. Elsewhere in the UK, ask your practice how local access works.",
         ],
+        sources: [references.records],
       },
       {
-        heading: "How to raise it",
+        heading: "Agree how the records will be used",
         bullets: [
-          "Be matter-of-fact: 'I'm considering a private medical cannabis prescription for my condition — I'd like your view'",
-          "Bring the facts: it's been legal since 2018, prescribed by GMC specialists, and you've tried conventional treatments",
-          "Ask for what you need practically — usually a copy of your summary care record for the clinic",
-          "If they're sceptical, that's okay. Ask them to note your decision in your records and keep the relationship constructive",
-        ],
-      },
-      {
-        heading: "If your GP is dismissive",
-        paragraphs: [
-          "Some GPs remain wary — the evidence base is young, and NHS prescribing is so rare that many have never seen it. Scepticism isn't a wall: your GP cannot block a private prescription, and the clinic's specialist makes the clinical decision. What your GP does control is access to your records, and you're entitled to those yourself.",
-          "Keep it friendly. You'll hopefully have the same GP for years, long after the prescription is routine.",
+          "Tell the surgery what the clinic needs and the period it should cover.",
+          "Use the clinic’s confirmed secure channel for sensitive documents.",
+          "Ask who sends the appointment summary to your GP and how you can get a copy.",
         ],
       },
     ],
   },
   {
     slug: "tolerance-breaks",
-    title: "Tolerance and treatment breaks",
+    title: "When to review your treatment",
     description:
-      "Why effects can fade over time, and how patients and clinics manage it.",
-    kicker: "Treatment",
-    readTime: "4 min read",
+      "Prepare for a discussion if the effects or drawbacks of a medicine change.",
+    kicker: "Treatment reviews",
+    readTime: "2 min read",
     intro:
-      "If your medicine seems to work less well than it did at first, you haven't imagined it — tolerance to THC is well documented. The good news: it's manageable, and a good clinic expects this conversation.",
+      "If your symptoms change or treatment feels less helpful, contact the prescribing team. Changes to the amount you take or the timing of a break need individual advice.",
     sections: [
       {
-        heading: "What tolerance looks like",
+        heading: "Review the original aim",
         paragraphs: [
-          "The same dose gradually delivers less symptom relief, tempting you upward. Left unmanaged, doses creep up, costs rise, and side effects increase while benefits stall. It's the single most common long-term issue patients report — and the most avoidable.",
+          "Note what you and the clinician hoped would change, what you noticed, and how it affects everyday tasks. Include unwanted effects and new prescriptions. This gives the clinician a better starting point than a single good or bad day.",
         ],
       },
       {
-        heading: "What helps",
-        bullets: [
-          "Stay on the lowest dose that works — resist creeping upward without clinical advice",
-          "Some patients schedule short 'T-breaks' of a few days with their clinician's agreement, which can reset sensitivity noticeably",
-          "Alternating or adjusting THC:CBD ratios under supervision can help some patients",
-          "Regular honest reviews: if benefit is fading, say so at follow-up rather than quietly doubling up",
-        ],
-        callout:
-          "Never stop long-term daily use abruptly without speaking to your clinic — rebound insomnia and irritability for a few days are common and manageable, but planned is better than sudden.",
-      },
-      {
-        heading: "The bigger picture",
+        heading: "Agree the next step",
         paragraphs: [
-          "Medical cannabis works best as one part of a wider approach — sleep habits, physiotherapy, therapy, pacing. Patients who lean on it as the only tool tend to hit tolerance problems hardest. Patients who use it to make the other tools possible tend to do best long-term.",
+          "Ask whether to continue, change or stop, and get the instructions in writing. Confirm when to contact the team again, who to reach between reviews and whether an additional appointment carries a fee.",
         ],
+        sources: [references.nice],
       },
     ],
   },
 ];
 
 export function getGuide(slug: string) {
-  return guides.find((g) => g.slug === slug);
+  return guides.find((guide) => guide.slug === slug);
 }

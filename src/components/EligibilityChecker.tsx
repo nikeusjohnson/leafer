@@ -1,210 +1,129 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
+import { useState } from "react";
 
-type Step = 0 | 1 | 2 | 3;
-type Outcome = "likely" | "maybe-not" | "not-uk" | null;
-
-const conditionOptions = [
-  { label: "Chronic pain", hint: "Back pain, neuropathy, fibromyalgia" },
-  { label: "Mental health", hint: "Anxiety, PTSD, depression, OCD" },
-  { label: "Neurological", hint: "MS, epilepsy, Tourette syndrome" },
-  { label: "Sleep", hint: "Insomnia linked to a chronic condition" },
-  { label: "Something else", hint: "Cancer-related, autoimmune, other" },
+const questions = [
+  {
+    title: "Where will you be seeking care?",
+    options: ["In the UK", "Outside the UK"],
+  },
+  {
+    title: "Have you discussed your symptoms with a clinician?",
+    options: [
+      "Yes, I have a diagnosis",
+      "I am still being assessed",
+      "I have not discussed them yet",
+    ],
+  },
+  {
+    title: "Have you tried treatment for these symptoms?",
+    options: [
+      "Yes, and I can describe the outcome",
+      "Yes, but I need to check the details",
+      "I have not tried treatment yet",
+    ],
+  },
 ];
 
-const treatmentOptions = [
-  { label: "Yes — two or more", value: "two" },
-  { label: "Only one so far", value: "one" },
-  { label: "Not yet", value: "none" },
-  { label: "I'm not sure", value: "unsure" },
+const historyAdvice = [
+  "Ask the clinic which documents it needs to confirm your diagnosis, such as a GP summary or a specialist letter.",
+  "Ask the clinician assessing your symptoms what is known so far and whether further tests or referrals are planned.",
+  "Start by discussing the symptoms with your usual clinician so they can consider possible causes and appropriate care.",
+];
+
+const treatmentAdvice = [
+  "Write down each treatment, when you tried it, what changed and any side effects. Ask the specialist how that history affects your options.",
+  "Request your treatment history from your GP surgery or specialist team. Include therapies as well as medicines and note what you remember about their effects.",
+  "Ask your usual clinician which established treatments may help and what each involves. A clinic can explain its own assessment criteria before you pay.",
 ];
 
 export default function EligibilityChecker() {
-  const [step, setStep] = useState<Step>(0);
-  const [treatments, setTreatments] = useState<string | null>(null);
-  const [outcome, setOutcome] = useState<Outcome>(null);
+  const [answers, setAnswers] = useState<number[]>([]);
+  const step = answers.length;
+  const outsideUK = answers[0] === 1;
+  const complete = outsideUK || step === questions.length;
+  const buttonClass =
+    "w-full rounded-2xl border border-line bg-white px-5 py-4 text-left font-semibold text-ink transition-colors hover:border-leaf hover:bg-leaf-tint";
 
-  const restart = () => {
-    setStep(0);
-    setTreatments(null);
-    setOutcome(null);
-  };
-
-  const optionClass =
-    "w-full rounded-2xl border border-line bg-cream-tint px-5 py-4 text-left transition-all duration-fast ease-out hover:-translate-y-0.5 hover:border-leaf/50 hover:shadow-soft focus-visible:border-leaf";
-
-  if (outcome) {
-    return (
-      <div className="card mx-auto max-w-2xl p-8 md:p-10">
-        {outcome === "likely" ? (
+  return (
+    <div className="card mx-auto max-w-2xl p-6 md:p-10">
+      <div
+        aria-live="polite"
+        aria-atomic="true"
+        key={complete ? "result" : step}
+      >
+        {complete ? (
           <>
-            <p className="eyebrow">Your result</p>
-            <h2 className="headline mt-3 text-[28px] md:text-[34px]">
-              You <em>appear</em> to be eligible
+            <p className="eyebrow">Your next steps</p>
+            <h2 className="headline mt-3 text-[30px]">
+              {outsideUK
+                ? "Check your local guidance"
+                : "Prepare for a clinical discussion"}
             </h2>
-            <p className="mt-4 text-[16px] leading-[1.7] text-ink-soft">
-              Based on your answers, you&apos;re likely to qualify for a
-              consultation with a specialist clinic. Only a GMC-registered
-              specialist can say for certain, but you tick the boxes that
-              clinics usually look for.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link href="/clinics" className="btn-primary">
-                Browse licensed clinics
-              </Link>
-              <Link href="/how-it-works" className="btn-secondary">
-                See how the process works
-              </Link>
-            </div>
-          </>
-        ) : outcome === "maybe-not" ? (
-          <>
-            <p className="eyebrow">Your result</p>
-            <h2 className="headline mt-3 text-[28px] md:text-[34px]">
-              You might not qualify <em>just yet</em>
-            </h2>
-            <p className="mt-4 text-[16px] leading-[1.7] text-ink-soft">
-              UK guidelines expect patients to have tried at least two
-              conventional treatments before a specialist will consider medical
-              cannabis. It&apos;s worth chatting to your GP about other options
-              first — and you can always come back once you&apos;ve tried them.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link href="/conditions" className="btn-primary">
-                Read about qualifying conditions
-              </Link>
-              <Link href="/faq" className="btn-secondary">
-                Browse the patient FAQ
-              </Link>
-            </div>
+            {outsideUK ? (
+              <p className="mt-4 leading-relaxed text-ink-soft">
+                Leafer covers UK clinics. Ask a clinician where you live about
+                local services and prescribing rules.
+              </p>
+            ) : (
+              <>
+                <ul className="mt-5 list-disc space-y-3 pl-5 leading-relaxed text-ink-soft">
+                  <li>{historyAdvice[answers[1]]}</li>
+                  <li>{treatmentAdvice[answers[2]]}</li>
+                  <li>
+                    Ask about other options, likely benefits and possible harms.
+                    Your clinician can assess what is appropriate for you.
+                  </li>
+                </ul>
+                <div className="mt-6 flex flex-wrap gap-4">
+                  <Link
+                    href="/guides/talking-to-your-gp"
+                    className="btn-primary"
+                  >
+                    Find your medical records
+                  </Link>
+                  <Link href="/clinics" className="btn-secondary">
+                    Compare clinic fees
+                  </Link>
+                </div>
+              </>
+            )}
           </>
         ) : (
           <>
-            <p className="eyebrow">Your result</p>
-            <h2 className="headline mt-3 text-[28px] md:text-[34px]">
-              This is for <em>UK residents</em> only
-            </h2>
-            <p className="mt-4 text-[16px] leading-[1.7] text-ink-soft">
-              Medical cannabis prescriptions through UK clinics are only
-              available to people living in the United Kingdom. Rules differ
-              considerably from country to country, so it&apos;s best to check
-              the guidance where you live.
+            <p className="eyebrow">
+              Question {step + 1} of {questions.length}
             </p>
+            <fieldset className="mt-5">
+              <legend className="headline text-[24px] md:text-[30px]">
+                {questions[step].title}
+              </legend>
+              <div className="mt-6 grid gap-3">
+                {questions[step].options.map((label, index) => (
+                  <button
+                    key={label}
+                    type="button"
+                    className={buttonClass}
+                    onClick={() => setAnswers([...answers, index])}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </fieldset>
           </>
         )}
+      </div>
+      {step > 0 && (
         <button
           type="button"
-          onClick={restart}
-          className="mt-8 font-mono text-[12px] uppercase tracking-[0.12em] text-ink-muted underline underline-offset-4 transition-colors hover:text-ink"
+          className="link-underline mt-6 font-semibold"
+          onClick={() => setAnswers(complete ? [] : answers.slice(0, -1))}
         >
-          Start again
+          {complete ? "Start again" : "Back"}
         </button>
-      </div>
-    );
-  }
-
-  return (
-    <div className="card mx-auto max-w-2xl p-8 md:p-10">
-      <p className="eyebrow">Step {step + 1} of 3 · about a minute</p>
-
-      {step === 0 && (
-        <fieldset className="mt-5">
-          <legend className="headline text-[24px] md:text-[28px]">
-            What are you mainly seeking help with?
-          </legend>
-          <p className="mt-2 text-[15px] text-ink-muted">
-            Choose whichever fits best — there&apos;s no wrong answer here.
-          </p>
-          <div className="mt-6 grid gap-3">
-            {conditionOptions.map((o) => (
-              <button key={o.label} type="button" className={optionClass} onClick={() => setStep(1)}>
-                <span className="block text-[16px] font-semibold text-ink">{o.label}</span>
-                <span className="mt-0.5 block text-[14px] text-ink-muted">{o.hint}</span>
-              </button>
-            ))}
-          </div>
-        </fieldset>
-      )}
-
-      {step === 1 && (
-        <fieldset className="mt-5">
-          <legend className="headline text-[24px] md:text-[28px]">
-            Have you tried at least two conventional treatments?
-          </legend>
-          <p className="mt-2 text-[15px] text-ink-muted">
-            Things like prescription medication, physiotherapy, CBT, or
-            specialist referrals all count.
-          </p>
-          <div className="mt-6 grid gap-3">
-            {treatmentOptions.map((o) => (
-              <button
-                key={o.value}
-                type="button"
-                className={optionClass}
-                onClick={() => {
-                  setTreatments(o.value);
-                  setStep(2);
-                }}
-              >
-                <span className="block text-[16px] font-semibold text-ink">{o.label}</span>
-              </button>
-            ))}
-          </div>
-          <BackButton onClick={() => setStep(0)} />
-        </fieldset>
-      )}
-
-      {step === 2 && (
-        <fieldset className="mt-5">
-          <legend className="headline text-[24px] md:text-[28px]">
-            Do you currently live in the UK?
-          </legend>
-          <p className="mt-2 text-[15px] text-ink-muted">
-            Prescriptions from UK clinics are only available to UK residents.
-          </p>
-          <div className="mt-6 grid gap-3">
-            <button
-              type="button"
-              className={optionClass}
-              onClick={() =>
-                setOutcome(
-                  treatments === "two" || treatments === "unsure"
-                    ? "likely"
-                    : "maybe-not"
-                )
-              }
-            >
-              <span className="block text-[16px] font-semibold text-ink">
-                Yes, I live in the UK
-              </span>
-            </button>
-            <button
-              type="button"
-              className={optionClass}
-              onClick={() => setOutcome("not-uk")}
-            >
-              <span className="block text-[16px] font-semibold text-ink">
-                No, I live elsewhere
-              </span>
-            </button>
-          </div>
-          <BackButton onClick={() => setStep(1)} />
-        </fieldset>
       )}
     </div>
-  );
-}
-
-function BackButton({ onClick }: { onClick: () => void }) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="mt-6 font-mono text-[12px] uppercase tracking-[0.12em] text-ink-muted underline underline-offset-4 transition-colors hover:text-ink"
-    >
-      ← Back
-    </button>
   );
 }

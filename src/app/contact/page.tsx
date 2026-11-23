@@ -63,15 +63,22 @@ export default function Contact() {
         <p className="text-[14px] leading-relaxed text-amber">
           If you&apos;re a current patient with a question about your
           medication, dosing or side effects, please contact your clinic&apos;s
-          clinical team directly — or NHS 111 in an urgent situation. We&apos;re
-          an information site and can&apos;t advise on individual treatment.
+          clinical team directly. For urgent medical help, use your local urgent
+          care service. We&apos;re an information site and can&apos;t advise on
+          individual treatment.
         </p>
       </div>
 
       <p className="mt-10 max-w-2xl text-[15px] leading-relaxed text-ink-muted">
-        Not sure where to start? The <Link href="/eligibility" className="link-underline">eligibility checker</Link> takes
-        a minute, and the <Link href="/clinics" className="link-underline">clinic comparison</Link> shows
-        who&apos;s who.
+        Not sure where to start? The{" "}
+        <Link href="/eligibility" className="link-underline">
+          eligibility checklist
+        </Link>{" "}
+        takes a minute, and the{" "}
+        <Link href="/clinics" className="link-underline">
+          clinic comparison
+        </Link>{" "}
+        shows who&apos;s who.
       </p>
     </section>
   );

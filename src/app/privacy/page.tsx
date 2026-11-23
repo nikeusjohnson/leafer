@@ -3,7 +3,8 @@ import Eyebrow from "@/components/Eyebrow";
 
 export const metadata: Metadata = {
   title: "Privacy policy",
-  description: "How Leafer handles your data — which is to say, as little as possible.",
+  description:
+    "How Leafer handles your data — which is to say, as little as possible.",
 };
 
 export default function Privacy() {
@@ -24,7 +25,7 @@ export default function Privacy() {
         {[
           {
             h: "What we collect",
-            p: "This website itself has no accounts, no contact forms and no email sign-ups. The eligibility checker runs entirely in your browser — your answers never leave your device. Standard, privacy-respecting analytics may record anonymised page visits (which pages are read, roughly where in the UK visitors are) so we know what's useful. That's it.",
+            p: "This website itself has no accounts, no contact forms and no email sign-ups. The eligibility checklist runs entirely in your browser — your answers never leave your device. Standard, privacy-respecting analytics may record anonymised page visits (which pages are read, roughly where in the UK visitors are) so we know what's useful. That's it.",
           },
           {
             h: "Cookies",
@@ -45,10 +46,14 @@ export default function Privacy() {
         ].map((s) => (
           <section key={s.h}>
             <h2 className="headline text-[24px] md:text-[28px]">{s.h}</h2>
-            <p className="mt-3 text-[16px] leading-[1.75] text-ink-soft">{s.p}</p>
+            <p className="mt-3 text-[16px] leading-[1.75] text-ink-soft">
+              {s.p}
+            </p>
           </section>
         ))}
-        <p className="text-[13px] text-ink-muted">Last updated: November 2026</p>
+        <p className="text-[13px] text-ink-muted">
+          Last updated: November 2026
+        </p>
       </div>
     </article>
   );

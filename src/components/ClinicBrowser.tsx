@@ -1,92 +1,154 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import Link from "next/link";
 import ClinicCard from "@/components/ClinicCard";
 import type { Clinic } from "@/data/clinics";
-
-type Sort = "score" | "price" | "name";
-type Format = "all" | "online" | "inperson";
+import styles from "@/app/clinics/clinics.module.css";
 
 export default function ClinicBrowser({ clinics }: { clinics: Clinic[] }) {
-  const [sort, setSort] = useState<Sort>("score");
-  const [format, setFormat] = useState<Format>("all");
-
-  const shown = useMemo(() => {
-    let list = [...clinics];
-    if (format === "online") list = list.filter((c) => !c.inPerson);
-    if (format === "inperson") list = list.filter((c) => c.inPerson);
-    if (sort === "score") list.sort((a, b) => b.score - a.score);
-    if (sort === "price") list.sort((a, b) => a.initialFeeNum - b.initialFeeNum);
-    if (sort === "name") list.sort((a, b) => a.name.localeCompare(b.name));
-    return list;
-  }, [clinics, sort, format]);
-
-  const chip = (active: boolean) =>
-    `rounded-full px-4 py-2 text-[13px] font-semibold transition-all duration-fast ${
-      active
-        ? "bg-ink text-cream"
-        : "border border-line bg-cream-tint text-ink-soft hover:border-ink/30"
-    }`;
+  const [search, setSearch] = useState("");
+  const [format, setFormat] = useState("all");
+  const [sort, setSort] = useState("name");
+  const [view, setView] = useState<"cards" | "table">("cards");
+  const query = search.trim().toLocaleLowerCase("en-GB");
+  const results = clinics
+    .filter((clinic) => {
+      const names = [clinic.name, clinic.registeredName, clinic.slug];
+      if (clinic.slug === "lyphe")
+        names.push("TMCC", "The Medical Cannabis Clinics");
+      return (
+        (!query ||
+          names.join(" ").toLocaleLowerCase("en-GB").includes(query)) &&
+        (format === "all" || clinic.inPerson)
+      );
+    })
+    .sort(
+      (a, b) =>
+        (sort === "price" ? a.initialFeeNum - b.initialFeeNum : 0) ||
+        a.name.localeCompare(b.name, "en-GB"),
+    );
 
   return (
-    <div>
-      {/* Controls */}
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-4 rounded-2xl border border-line bg-sage/40 px-5 py-4">
-        <div className="flex items-center gap-2">
-          <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-muted">
-            Sort
-          </span>
-          {(
-            [
-              ["score", "Leafer score"],
-              ["price", "Lowest fee"],
-              ["name", "A–Z"],
-            ] as [Sort, string][]
-          ).map(([v, label]) => (
-            <button
-              key={v}
-              type="button"
-              aria-pressed={sort === v}
-              onClick={() => setSort(v)}
-              className={chip(sort === v)}
-            >
-              {label}
-            </button>
+    <section aria-labelledby="directory-heading" className={styles.results}>
+      <div className={styles.toolbar}>
+        <label>
+          Find a clinic
+          <input
+            type="search"
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+            placeholder="Search by clinic name"
+          />
+        </label>
+        <label>
+          Appointment format
+          <select
+            value={format}
+            onChange={(event) => setFormat(event.target.value)}
+          >
+            <option value="all">All formats</option>
+            <option value="inperson">In-person option</option>
+          </select>
+        </label>
+        <label>
+          Sort by
+          <select
+            value={sort}
+            onChange={(event) => setSort(event.target.value)}
+          >
+            <option value="name">Clinic name (A–Z)</option>
+            <option value="price">Lowest starting fee</option>
+          </select>
+        </label>
+      </div>
+      <div className={styles.resultHeader}>
+        <h2 id="directory-heading" aria-live="polite">
+          {results.length} {results.length === 1 ? "clinic" : "clinics"}
+        </h2>
+        <div
+          className={styles.viewSwitch}
+          aria-label="Display results"
+          role="group"
+        >
+          <button
+            type="button"
+            aria-pressed={view === "cards"}
+            onClick={() => setView("cards")}
+          >
+            Cards
+          </button>
+          <button
+            type="button"
+            aria-pressed={view === "table"}
+            onClick={() => setView("table")}
+          >
+            Table
+          </button>
+        </div>
+      </div>
+      {results.length === 0 ? (
+        <div className={styles.empty}>
+          <p>No clinics match your search and appointment format.</p>
+          <button
+            type="button"
+            className={styles.link}
+            onClick={() => {
+              setSearch("");
+              setFormat("all");
+            }}
+          >
+            Clear filters
+          </button>
+        </div>
+      ) : view === "cards" ? (
+        <div className={styles.cardGrid}>
+          {results.map((clinic) => (
+            <ClinicCard key={clinic.slug} clinic={clinic} />
           ))}
         </div>
-        <div className="flex items-center gap-2">
-          <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-muted">
-            Format
-          </span>
-          {(
-            [
-              ["all", "All"],
-              ["online", "Online only"],
-              ["inperson", "Offers in-person"],
-            ] as [Format, string][]
-          ).map(([v, label]) => (
-            <button
-              key={v}
-              type="button"
-              aria-pressed={format === v}
-              onClick={() => setFormat(v)}
-              className={chip(format === v)}
-            >
-              {label}
-            </button>
-          ))}
+      ) : (
+        <div
+          className={styles.scrollTable}
+          tabIndex={0}
+          role="region"
+          aria-label="Clinic fees comparison table"
+        >
+          <table>
+            <caption className="sr-only">
+              Published starting fees, follow-ups and appointment formats
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Clinic</th>
+                <th scope="col">Starting fee</th>
+                <th scope="col">Follow-up care</th>
+                <th scope="col">Appointments</th>
+              </tr>
+            </thead>
+            <tbody>
+              {results.map((clinic) => (
+                <tr key={clinic.slug}>
+                  <th scope="row">
+                    <Link
+                      className={styles.link}
+                      href={`/clinics/${clinic.slug}`}
+                    >
+                      {clinic.name}
+                    </Link>
+                  </th>
+                  <td>
+                    <strong>{clinic.initialFee}</strong>
+                    <span>{clinic.initialFeeLabel}</span>
+                  </td>
+                  <td>{clinic.followUpFee}</td>
+                  <td>{clinic.format}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-        <p className="ml-auto font-mono text-[11px] uppercase tracking-[0.12em] text-ink-muted">
-          {shown.length} of {clinics.length} clinics
-        </p>
-      </div>
-
-      {/* Results */}
-      <div className="mt-6 space-y-4">
-        {shown.map((c, i) => (
-          <ClinicCard key={c.slug} clinic={c} rank={i + 1} />
-        ))}
-      </div>
-    </div>
+      )}
+    </section>
   );
 }
