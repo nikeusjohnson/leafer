@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: #2f7d4f;
+    color: #fbf8f1;
+  }
+
+  :focus-visible {
+    outline: 2px solid #2f7d4f;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Native accordion */
+  details > summary {
+    cursor: pointer;
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+  details[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.14em] text-leaf-deep;
+  }
+
+  .eyebrow-badge {
+    @apply inline-flex items-center gap-2;
+  }
+
+  .eyebrow-num {
+    @apply inline-flex h-6 w-6 items-center justify-center rounded-md bg-leaf-tint font-mono text-[11px] text-leaf-deep;
+  }
+
+  .headline {
+    @apply font-serif tracking-[-0.025em] text-ink;
+    font-optical-sizing: auto;
+  }
+
+  .headline em {
+    @apply not-italic font-serif italic text-leaf;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-leaf px-6 py-3 text-[15px] font-semibold text-cream shadow-soft transition-all duration-fast ease-out hover:-translate-y-0.5 hover:bg-leaf-deep hover:shadow-lift;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl border border-line bg-transparent px-6 py-3 text-[15px] font-semibold text-ink transition-all duration-fast ease-out hover:-translate-y-0.5 hover:border-ink/30 hover:shadow-soft;
+  }
+
+  .btn-secondary-dark {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl border border-cream/25 bg-transparent px-6 py-3 text-[15px] font-semibold text-cream transition-all duration-fast ease-out hover:-translate-y-0.5 hover:border-cream/60;
+  }
+
+  .hairline-t {
+    @apply border-t border-line;
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-cream-tint shadow-soft transition-all duration-fast ease-out;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-0.5 hover:shadow-lift;
+  }
+
+  .link-underline {
+    @apply text-leaf-deep underline decoration-leaf/40 underline-offset-4 transition-colors duration-fast hover:decoration-leaf;
+  }
+}
