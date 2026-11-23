@@ -17,6 +17,7 @@ const columns = [
       { href: "/eligibility", label: "Eligibility checker" },
       { href: "/faq", label: "Patient FAQ" },
       { href: "/uk-law", label: "UK cannabis law" },
+      { href: "/glossary", label: "Glossary" },
       { href: "/guides/costs", label: "What it costs" },
     ],
   },
@@ -24,6 +25,7 @@ const columns = [
     title: "About",
     links: [
       { href: "/about", label: "About Leafer" },
+      { href: "/contact", label: "Contact" },
       { href: "/privacy", label: "Privacy policy" },
     ],
   },

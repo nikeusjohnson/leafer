@@ -305,6 +305,102 @@ export const conditions: Condition[] = [
       },
     ],
   },
+  {
+    slug: "tourette-syndrome",
+    name: "Tourette syndrome",
+    short: "Tic disorders that haven't responded to behavioural therapy or medication.",
+    intro:
+      "Tourette syndrome causes involuntary movements and sounds (tics) that can range from mild to genuinely disabling. Where behavioural therapy and standard medication haven't brought tics under control, UK specialists may consider cannabis-based medicines.",
+    commonlyPrescribed: false,
+    sections: [
+      {
+        heading: "When is it considered?",
+        paragraphs: [
+          "Clinics look for a confirmed Tourette diagnosis with tics that significantly affect daily life — work, sleep, social situations — despite proper first-line treatment. That usually means comprehensive behavioural intervention for tics (CBIT) or habit-reversal training, and often medication such as aripiprazole or clonidine.",
+        ],
+      },
+      {
+        heading: "What the evidence says",
+        paragraphs: [
+          "The evidence base is small but intriguing: a handful of trials and case series report reduced tic frequency and severity with THC-containing medicines. It's not conclusive, sample sizes have been small, and it's very much a 'specialist judgement' area rather than an established treatment.",
+          "Sapphire Medical Clinics, which runs the UK Medical Cannabis Registry, lists Tourette syndrome among its focus areas — worth knowing if you want a clinic with specific experience.",
+        ],
+      },
+      {
+        heading: "What clinics will want to see",
+        bullets: [
+          "A formal diagnosis from a neurologist or psychiatrist",
+          "Records of behavioural therapy and any medications tried",
+          "An honest picture of how tics affect your day-to-day life",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "cancer-related-symptoms",
+    name: "Cancer-related symptoms",
+    short: "Pain, nausea, poor appetite and sleep problems during cancer treatment.",
+    intro:
+      "Medical cannabis doesn't treat cancer itself — and be wary of anyone who claims otherwise. Where it may help is with the symptoms that cancer and its treatment bring: pain, chemotherapy-related nausea, poor appetite, anxiety and broken sleep.",
+    commonlyPrescribed: false,
+    sections: [
+      {
+        heading: "What it can and can't do",
+        paragraphs: [
+          "Let's be plain: despite what the internet says, there is no good evidence that cannabis cures or shrinks cancer. What it may ease — with reasonable supporting evidence for nausea in particular — are the side effects of treatment and the symptoms of the illness.",
+          "For some patients, that distinction hardly matters: sleeping through the night and keeping food down during chemotherapy is a quality-of-life difference that counts.",
+        ],
+        callout:
+          "Always tell your oncology team about any cannabis-based medicine you're using or considering. Interactions with chemotherapy and other medications are possible, and your team needs the full picture.",
+      },
+      {
+        heading: "What the evidence says",
+        paragraphs: [
+          "Cannabis-based medicines have decent evidence for chemotherapy-induced nausea and vomiting that standard anti-sickness drugs haven't controlled — indeed some of the oldest licensed cannabinoid medicines worldwide were for exactly this. Evidence for cancer pain is moderate; for appetite and sleep, mostly patient-reported.",
+        ],
+      },
+      {
+        heading: "What clinics will want to see",
+        bullets: [
+          "Your oncology diagnosis and treatment history",
+          "Which symptoms are the priority — pain, nausea, appetite, sleep",
+          "What anti-sickness or pain medication you've already tried",
+          "Confirmation that your oncology team is aware (most clinics will ask)",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "adhd",
+    name: "ADHD",
+    short: "An emerging area — some clinics assess it, the evidence is still young.",
+    intro:
+      "ADHD is one of the newer reasons people enquire about medical cannabis in the UK, particularly adults whose symptoms or sleep problems haven't settled with standard medication. Some clinics will assess it; others won't. It's an area where honesty about the evidence matters.",
+    commonlyPrescribed: false,
+    sections: [
+      {
+        heading: "The honest position",
+        paragraphs: [
+          "Standard ADHD medications — methylphenidate, lisdexamfetamine, atomoxetine — work well for most people and remain the proper first line. Cannabis-based medicines enter the conversation only where those haven't suited you, and mainly for associated problems like insomnia, anxiety or appetite loss rather than core attention symptoms.",
+          "With NHS ADHD waiting lists stretching into years in many areas, more adults are exploring private options of every kind. A good clinic will still expect a formal diagnosis and a proper treatment history.",
+        ],
+      },
+      {
+        heading: "What the evidence says",
+        paragraphs: [
+          "Thin. Small studies and patient surveys suggest some benefit for sleep and restlessness in adults with ADHD, but there's no robust trial evidence for core symptoms, and heavy THC use can worsen attention and motivation in some people. Go in with realistic expectations and a specialist who's straight with you.",
+        ],
+      },
+      {
+        heading: "What clinics will want to see",
+        bullets: [
+          "A formal ADHD diagnosis from a psychiatrist or specialist service",
+          "Records of medications tried and why they didn't suit",
+          "A clear sense of which symptoms you're hoping to address",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getCondition(slug: string) {

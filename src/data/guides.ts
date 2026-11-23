@@ -211,6 +211,156 @@ export const guides: Guide[] = [
       },
     ],
   },
+  {
+    slug: "cbd-vs-medical-cannabis",
+    title: "CBD from the shops vs medical cannabis",
+    description:
+      "They're not the same thing — and the difference matters for your wallet and your health.",
+    kicker: "Explained",
+    readTime: "4 min read",
+    intro:
+      "You can buy CBD oil in any UK high street, yet medical cannabis needs a specialist prescription. Confusing the two costs people money and delays proper treatment — so here's the difference, plainly.",
+    sections: [
+      {
+        heading: "Shop-bought CBD",
+        paragraphs: [
+          "CBD products sold in shops are legally food supplements. They must contain no more than trace THC (1mg per container), they can't make medical claims, and they're not assessed as medicines. Quality varies enormously — independent testing has repeatedly found high-street products containing far less CBD than the label claims.",
+          "For general wellbeing, some people find them helpful and that's fine. But they are not a substitute for prescribed treatment, and at £30–£60 a bottle, the cost of 'giving it a go' adds up fast.",
+        ],
+      },
+      {
+        heading: "Prescription medical cannabis",
+        bullets: [
+          "A regulated medicine, made to pharmaceutical standards with verified contents",
+          "Can contain significant, precisely dosed THC and/or CBD",
+          "Prescribed by a GMC-registered specialist for a diagnosed condition",
+          "Dispensed by a licensed pharmacy, with ongoing clinical oversight",
+        ],
+      },
+      {
+        heading: "So which do you need?",
+        paragraphs: [
+          "If you have a diagnosed condition that's affecting your life and standard treatment hasn't worked, the proper route is a specialist consultation — not the wellness aisle. If you're just curious about CBD for general relaxation, shop products are legal and low-risk, but buy brands that publish independent lab reports.",
+          "One more thing: if you're about to start a prescription, tell the specialist about any CBD you already take. It's a real compound with real interactions, and they'll want it in the picture.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "side-effects",
+    title: "Side effects: what to actually expect",
+    description:
+      "The honest list — what's common, what's rare, and when to call your clinic.",
+    kicker: "Treatment",
+    readTime: "5 min read",
+    intro:
+      "Every medicine has side effects, and medical cannabis is no exception. Most are mild and fade as your body adjusts — but you should know the full picture before you start, not after.",
+    sections: [
+      {
+        heading: "Common in the first few weeks",
+        bullets: [
+          "Drowsiness or feeling 'foggy' — the most common, usually fades with dose adjustment",
+          "Dry mouth",
+          "Dizziness, especially when standing up",
+          "Increased appetite",
+          "Mild euphoria or feeling 'high' with THC-containing products, mainly at the start",
+        ],
+      },
+      {
+        heading: "Less common but worth knowing",
+        paragraphs: [
+          "Some people find THC increases anxiety or causes paranoia, particularly at higher doses. Others experience nausea or headaches. If anything feels wrong, the answer is always the same: contact your clinic, don't just push through or quietly stop.",
+          "Tolerance is real too — effects can fade with long-term daily use, which is one reason good clinicians keep doses as low as effective and review regularly.",
+        ],
+      },
+      {
+        heading: "When to contact your clinic promptly",
+        bullets: [
+          "Anxiety, low mood or paranoia that's new or clearly worse",
+          "Heart palpitations or chest discomfort",
+          "Feeling dependent — needing more for the same effect, or unwell without it",
+          "Anything that frightens you. That's what follow-ups are for",
+        ],
+        callout:
+          "If you have a personal or close family history of psychosis, tell the specialist before you start — not after. THC-containing products may be unsuitable, and there are often CBD-dominant alternatives.",
+      },
+      {
+        heading: "A word on dependence",
+        paragraphs: [
+          "Cannabis-based medicines can be habit-forming with long-term use, particularly THC-dominant products at higher doses. Used as prescribed — lowest effective dose, regular review, honest conversations with your clinician — the risk is manageable. Stopping suddenly after long daily use can cause a few rough nights and irritability, so taper with your clinic's guidance.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "talking-to-your-gp",
+    title: "Talking to your GP about it",
+    description:
+      "How to raise medical cannabis with your GP — including when they're sceptical.",
+    kicker: "Your GP",
+    readTime: "4 min read",
+    intro:
+      "You don't need your GP's permission to get a private prescription — but keeping them in the loop is genuinely good for your care. Here's how to have that conversation, even if you're expecting a raised eyebrow.",
+    sections: [
+      {
+        heading: "Why bother telling them?",
+        paragraphs: [
+          "Your GP coordinates everything else about your health. If they don't know you're prescribed a cannabis-based medicine, they can't watch for interactions with other medications, and your records won't reflect what you're actually taking. Clinics will normally write to your GP after prescribing anyway — it lands better when it isn't a surprise.",
+        ],
+      },
+      {
+        heading: "How to raise it",
+        bullets: [
+          "Be matter-of-fact: 'I'm considering a private medical cannabis prescription for my condition — I'd like your view'",
+          "Bring the facts: it's been legal since 2018, prescribed by GMC specialists, and you've tried conventional treatments",
+          "Ask for what you need practically — usually a copy of your summary care record for the clinic",
+          "If they're sceptical, that's okay. Ask them to note your decision in your records and keep the relationship constructive",
+        ],
+      },
+      {
+        heading: "If your GP is dismissive",
+        paragraphs: [
+          "Some GPs remain wary — the evidence base is young, and NHS prescribing is so rare that many have never seen it. Scepticism isn't a wall: your GP cannot block a private prescription, and the clinic's specialist makes the clinical decision. What your GP does control is access to your records, and you're entitled to those yourself.",
+          "Keep it friendly. You'll hopefully have the same GP for years, long after the prescription is routine.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "tolerance-breaks",
+    title: "Tolerance and treatment breaks",
+    description:
+      "Why effects can fade over time, and how patients and clinics manage it.",
+    kicker: "Treatment",
+    readTime: "4 min read",
+    intro:
+      "If your medicine seems to work less well than it did at first, you haven't imagined it — tolerance to THC is well documented. The good news: it's manageable, and a good clinic expects this conversation.",
+    sections: [
+      {
+        heading: "What tolerance looks like",
+        paragraphs: [
+          "The same dose gradually delivers less symptom relief, tempting you upward. Left unmanaged, doses creep up, costs rise, and side effects increase while benefits stall. It's the single most common long-term issue patients report — and the most avoidable.",
+        ],
+      },
+      {
+        heading: "What helps",
+        bullets: [
+          "Stay on the lowest dose that works — resist creeping upward without clinical advice",
+          "Some patients schedule short 'T-breaks' of a few days with their clinician's agreement, which can reset sensitivity noticeably",
+          "Alternating or adjusting THC:CBD ratios under supervision can help some patients",
+          "Regular honest reviews: if benefit is fading, say so at follow-up rather than quietly doubling up",
+        ],
+        callout:
+          "Never stop long-term daily use abruptly without speaking to your clinic — rebound insomnia and irritability for a few days are common and manageable, but planned is better than sudden.",
+      },
+      {
+        heading: "The bigger picture",
+        paragraphs: [
+          "Medical cannabis works best as one part of a wider approach — sleep habits, physiotherapy, therapy, pacing. Patients who lean on it as the only tool tend to hit tolerance problems hardest. Patients who use it to make the other tools possible tend to do best long-term.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getGuide(slug: string) {

@@ -15,6 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/guides",
     "/uk-law",
     "/faq",
+    "/glossary",
+    "/contact",
     "/about",
     "/privacy",
   ].map((p) => ({

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Eyebrow from "@/components/Eyebrow";
-import ClinicCard from "@/components/ClinicCard";
+import ClinicBrowser from "@/components/ClinicBrowser";
 import { clinics } from "@/data/clinics";
 
 export const metadata: Metadata = {
@@ -26,11 +26,9 @@ export default function ClinicsIndex() {
         for its place.
       </p>
 
-      {/* Ranked result cards */}
-      <div className="mt-12 space-y-4">
-        {ranked.map((c, i) => (
-          <ClinicCard key={c.slug} clinic={c} rank={i + 1} />
-        ))}
+      {/* Ranked result cards with sort & filter */}
+      <div className="mt-12">
+        <ClinicBrowser clinics={clinics} />
       </div>
 
       {/* Full comparison table */}

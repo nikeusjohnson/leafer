@@ -4,6 +4,8 @@ export type Clinic = {
   tag: string;
   score: number;
   bestFor: string;
+  initialFeeNum: number;
+  inPerson: boolean;
   summary: string;
   initialFee: string;
   followUpFee: string;
@@ -23,6 +25,8 @@ export const clinics: Clinic[] = [
     tag: "One of the most established",
     score: 8.8,
     bestFor: "A safe all-round choice",
+    initialFeeNum: 99,
+    inPerson: false,
     summary:
       "One of the UK's longest-running medical cannabis clinics, with nationwide video consultations and a broad network of GMC-registered specialists.",
     initialFee: "From £99",
@@ -53,6 +57,8 @@ export const clinics: Clinic[] = [
     tag: "Fully online, app-based",
     score: 9.1,
     bestFor: "Keeping costs down",
+    initialFeeNum: 79,
+    inPerson: false,
     summary:
       "A fully digital clinic with some of the lowest advertised initial consultation fees in the UK, run largely through its own app.",
     initialFee: "From £79",
@@ -83,6 +89,8 @@ export const clinics: Clinic[] = [
     tag: "Specialist-led",
     score: 8.7,
     bestFor: "Complex conditions",
+    initialFeeNum: 95,
+    inPerson: false,
     summary:
       "An independent specialist clinic with a focus on complex and treatment-resistant conditions, offering appointments seven days a week.",
     initialFee: "From £95",
@@ -113,6 +121,8 @@ export const clinics: Clinic[] = [
     tag: "Part of an international group",
     score: 8.3,
     bestFor: "Product choice",
+    initialFeeNum: 100,
+    inPerson: false,
     summary:
       "The UK prescribing arm of a large international cannabis company, with a structured patient pathway and a wide range of licensed products.",
     initialFee: "From £100",
@@ -143,6 +153,8 @@ export const clinics: Clinic[] = [
     tag: "Research-focused",
     score: 8.5,
     bestFor: "Clinical rigour",
+    initialFeeNum: 150,
+    inPerson: true,
     summary:
       "A clinically rigorous clinic that runs the UK Medical Cannabis Registry, with specialists from strong academic and NHS backgrounds.",
     initialFee: "From £150",
@@ -173,6 +185,8 @@ export const clinics: Clinic[] = [
     tag: "Patient-experience focused",
     score: 8.6,
     bestFor: "A smooth first experience",
+    initialFeeNum: 99,
+    inPerson: false,
     summary:
       "Formerly Integro Medical Clinics, now an online-only service with clear pricing and an emphasis on patient experience.",
     initialFee: "From £99",
@@ -203,6 +217,8 @@ export const clinics: Clinic[] = [
     tag: "Large clinic network",
     score: 8.4,
     bestFor: "In-person appointments",
+    initialFeeNum: 99,
+    inPerson: true,
     summary:
       "One of the UK's larger medical cannabis clinic networks, with self-referral, multiple locations and broad condition coverage.",
     initialFee: "From £99",
@@ -233,6 +249,8 @@ export const clinics: Clinic[] = [
     tag: "Early UK prescriber",
     score: 8.0,
     bestFor: "An experienced team",
+    initialFeeNum: 149,
+    inPerson: false,
     summary:
       "One of the UK's first licensed cannabis prescribers, with specialist-led assessments and a focus on chronic pain and PTSD.",
     initialFee: "From £149",
