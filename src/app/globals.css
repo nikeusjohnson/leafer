@@ -13,12 +13,12 @@
   }
 
   ::selection {
-    background-color: #2f7d4f;
-    color: #fbf8f1;
+    background-color: #1f6b2a;
+    color: #fffdf4;
   }
 
   :focus-visible {
-    outline: 2px solid #2f7d4f;
+    outline: 2px solid #1f6b2a;
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -70,15 +70,15 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-leaf px-7 py-3 text-[15px] font-bold text-cream shadow-soft transition-all duration-fast ease-out hover:-translate-y-0.5 hover:bg-leaf-deep hover:shadow-lift;
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-leaf-deep px-7 py-3 text-[15px] font-bold text-sun shadow-soft transition-all duration-fast ease-out hover:-translate-y-0.5 hover:bg-forest hover:shadow-lift;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink/15 bg-transparent px-7 py-3 text-[15px] font-bold text-ink transition-all duration-fast ease-out hover:-translate-y-0.5 hover:border-leaf hover:text-leaf hover:shadow-soft;
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-leaf-deep/20 bg-transparent px-7 py-3 text-[15px] font-bold text-ink transition-all duration-fast ease-out hover:-translate-y-0.5 hover:border-leaf-deep hover:text-leaf-deep hover:shadow-soft;
   }
 
   .btn-secondary-dark {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-cream/30 bg-transparent px-7 py-3 text-[15px] font-bold text-cream transition-all duration-fast ease-out hover:-translate-y-0.5 hover:border-cream/70;
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-lime/50 bg-transparent px-7 py-3 text-[15px] font-bold text-lime transition-all duration-fast ease-out hover:-translate-y-0.5 hover:border-lime;
   }
 
   .hairline-t {

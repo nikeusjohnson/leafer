@@ -9,7 +9,7 @@ function Stars({ score }: { score: number }) {
         <svg key={i} width="14" height="14" viewBox="0 0 14 14" fill="none">
           <path
             d="M7 1.2l1.76 3.57 3.94.57-2.85 2.78.67 3.92L7 10.33l-3.52 1.85.67-3.92L1.3 5.34l3.94-.57L7 1.2z"
-            fill={i <= full ? "#F5A623" : "#E3E8F2"}
+            fill={i <= full ? "#F5A623" : "#E5E1CC"}
           />
         </svg>
       ))}
@@ -109,7 +109,7 @@ export default function ClinicCard({
         {clinic.suits.slice(0, 3).map((s, i) => (
           <li key={i} className="flex items-center gap-2 text-[13px] text-ink-soft">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="shrink-0">
-              <path d="M2.5 7.5l3 3 6-7" stroke="#0057D9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M2.5 7.5l3 3 6-7" stroke="#1F6B2A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             {s}
           </li>

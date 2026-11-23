@@ -17,7 +17,7 @@ export default function FaqList({ faqs }: { faqs: Faq[] }) {
             >
               <path
                 d="M4 6.5l5 5 5-5"
-                stroke="#0057D9"
+                stroke="#1F6B2A"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"

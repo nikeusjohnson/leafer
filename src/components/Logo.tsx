@@ -17,25 +17,25 @@ export default function Logo({ dark = false }: { dark?: boolean }) {
       >
         <path
           d="M13 24V10"
-          stroke={dark ? "#FFFFFF" : "#0F1B46"}
+          stroke={dark ? "#FFFDF4" : "#143C14"}
           strokeWidth="1.8"
           strokeLinecap="round"
         />
         <path
           d="M13 14C13 14 6.5 13.2 4.2 6.4C11 6.4 13 11.5 13 14Z"
-          fill={dark ? "#FFFFFF" : "#0057D9"}
+          fill={dark ? "#FFFDF4" : "#1F6B2A"}
         />
         <path
           d="M13 11C13 11 19.5 10.2 21.8 3.4C15 3.4 13 8.5 13 11Z"
-          fill={dark ? "#7FB0FF" : "#0F1B46"}
+          fill={dark ? "#C5E47D" : "#143C14"}
         />
       </svg>
       <span
-        className={`text-[22px] font-extrabold tracking-[-0.02em] ${
+        className={`text-[22px] font-extrabold uppercase tracking-[-0.01em] ${
           dark ? "text-cream" : "text-ink"
         }`}
       >
-        leafer
+        Leafer
         <span className={dark ? "text-cream/50" : "text-ink-muted"}>.co.uk</span>
       </span>
     </Link>

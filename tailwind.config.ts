@@ -6,29 +6,31 @@ const config: Config = {
     extend: {
       colors: {
         cream: {
-          DEFAULT: "#FFFFFF",
-          deep: "#F4F7FD",
+          DEFAULT: "#FFFDF4",
+          deep: "#F7F2DE",
           tint: "#FFFFFF",
         },
         ink: {
-          DEFAULT: "#0F1B46",
-          soft: "#33406B",
-          muted: "#5A6486",
+          DEFAULT: "#143C14",
+          soft: "#33512F",
+          muted: "#64755C",
         },
         leaf: {
-          DEFAULT: "#0057D9",
-          deep: "#003FA3",
-          tint: "#EAF1FF",
+          DEFAULT: "#1F6B2A",
+          deep: "#173F15",
+          tint: "#E9F5DC",
         },
         sage: {
-          DEFAULT: "#E9F0FE",
-          deep: "#D6E4FD",
+          DEFAULT: "#F0EDDA",
+          deep: "#E3DFC5",
         },
-        forest: "#0A1433",
-        line: "#E3E8F2",
+        forest: "#0E2A0F",
+        line: "#E5E1CC",
         amber: "#8A6A1F",
         amberTint: "#F6EFDA",
         gold: "#F5A623",
+        sun: "#F6E35C",
+        lime: "#C5E47D",
       },
       fontFamily: {
         serif: ["var(--font-figtree)", "ui-sans-serif", "system-ui", "sans-serif"],
