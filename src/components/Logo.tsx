@@ -17,21 +17,21 @@ export default function Logo({ dark = false }: { dark?: boolean }) {
       >
         <path
           d="M13 24V10"
-          stroke={dark ? "#FBF8F1" : "#0C341A"}
+          stroke={dark ? "#FFFFFF" : "#0F1B46"}
           strokeWidth="1.8"
           strokeLinecap="round"
         />
         <path
           d="M13 14C13 14 6.5 13.2 4.2 6.4C11 6.4 13 11.5 13 14Z"
-          fill={dark ? "#FBF8F1" : "#2F7D4F"}
+          fill={dark ? "#FFFFFF" : "#0057D9"}
         />
         <path
           d="M13 11C13 11 19.5 10.2 21.8 3.4C15 3.4 13 8.5 13 11Z"
-          fill={dark ? "#8FBF9B" : "#1F5C38"}
+          fill={dark ? "#7FB0FF" : "#0F1B46"}
         />
       </svg>
       <span
-        className={`font-serif text-[22px] font-semibold tracking-[-0.02em] ${
+        className={`text-[22px] font-extrabold tracking-[-0.02em] ${
           dark ? "text-cream" : "text-ink"
         }`}
       >

@@ -1,7 +1,0 @@
-time: 2026-11-23T20:07:58.259Z
-cwd: C:\Users\NicholasJohnson\Desktop\product-compare1\app
-node: v24.21.0 @ C:\Users\NicholasJohnson\AppData\Local\Programs\kimi-desktop\Kimi.exe
-argv: ["C:\\Users\\NicholasJohnson\\AppData\\Local\\Programs\\kimi-desktop\\Kimi.exe","C:\\Users\\NicholasJohnson\\Desktop\\product-compare1\\app\\scripts\\dev-wrapper.js","--host","localhost","--port","7100"]
-PATH: C:\Users\NicholasJohnson\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\git\mingw64\bin;C:\Users\NicholasJohnson\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\git\usr\bin;C:\Users\NicholasJohnson\bin;C:\Users\NicholasJohnson\AppData\Roaming\kimi-desktop\daimon-share\daimon\runtime\python\.venv\Scripts;C:\Users\NicholasJohnson\AppData\Roaming\kimi-desktop\daimon-share\daimon\command-process-owner\bin;C:\Users\NicholasJohnson\AppData\Local\Programs\kimi-desktop\resources\resources\runtime;C:\Users\NicholasJohnson\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\uv;C:\Users\NicholasJohnson\AppData\Roaming\kimi-desktop\daimon-bundle\runtime\git\cmd;C:\Users\NicholasJohnson\AppData\Roaming\kimi-desktop\daimon-share\daimon\npm-global;C:\Users\NicholasJohnson\.kimi-work\bin;C:\Windows\System32;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows
-PORT: 
----

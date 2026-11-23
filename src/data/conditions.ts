@@ -323,7 +323,7 @@ export const conditions: Condition[] = [
         heading: "What the evidence says",
         paragraphs: [
           "The evidence base is small but intriguing: a handful of trials and case series report reduced tic frequency and severity with THC-containing medicines. It's not conclusive, sample sizes have been small, and it's very much a 'specialist judgement' area rather than an established treatment.",
-          "Sapphire Medical Clinics, which runs the UK Medical Cannabis Registry, lists Tourette syndrome among its focus areas — worth knowing if you want a clinic with specific experience.",
+          "Curaleaf Clinic (formerly Sapphire Medical), which runs the UK Medical Cannabis Registry, lists Tourette syndrome among its focus areas — worth knowing if you want a clinic with specific experience.",
         ],
       },
       {

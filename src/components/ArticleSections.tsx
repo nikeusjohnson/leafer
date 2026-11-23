@@ -37,7 +37,7 @@ export default function ArticleSections({ sections }: { sections: Section[] }) {
                   >
                     <path
                       d="M3 9.5l4 4 8-9"
-                      stroke="#2F7D4F"
+                      stroke="#0057D9"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"

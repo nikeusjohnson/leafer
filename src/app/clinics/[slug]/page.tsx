@@ -68,7 +68,7 @@ export default async function ClinicPage({
                 {c.suits.map((s, i) => (
                   <li key={i} className="flex gap-3 text-[16px] leading-relaxed text-ink-soft">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="mt-1 shrink-0">
-                      <path d="M3 9.5l4 4 8-9" stroke="#2F7D4F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M3 9.5l4 4 8-9" stroke="#0057D9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                     <span>{s}</span>
                   </li>
@@ -115,6 +115,27 @@ export default async function ClinicPage({
                   <dd className="mt-1 text-[15px] font-semibold text-ink">{v}</dd>
                 </div>
               ))}
+              {c.trustpilot && (
+                <div className="py-3.5">
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-muted">
+                    Trustpilot
+                  </dt>
+                  <dd className="mt-1 flex items-center gap-2 text-[15px] font-semibold text-ink">
+                    <span className="inline-flex items-center gap-0.5" aria-hidden="true">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <svg key={i} width="13" height="13" viewBox="0 0 14 14" fill="none">
+                          <path
+                            d="M7 1.2l1.76 3.57 3.94.57-2.85 2.78.67 3.92L7 10.33l-3.52 1.85.67-3.92L1.3 5.34l3.94-.57L7 1.2z"
+                            fill={i <= Math.round(c.trustpilot!.score) ? "#F5A623" : "#E3E8F2"}
+                          />
+                        </svg>
+                      ))}
+                    </span>
+                    {c.trustpilot.score.toFixed(1)} ·{" "}
+                    {c.trustpilot.count.toLocaleString("en-GB")} reviews
+                  </dd>
+                </div>
+              )}
               <div className="py-3.5">
                 <dt className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-muted">
                   Commonly treats

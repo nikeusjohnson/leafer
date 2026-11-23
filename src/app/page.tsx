@@ -39,14 +39,14 @@ export default function Home() {
             </p>
             <ul className="mt-8 space-y-3">
               {[
-                "8 licensed clinics compared — fees, drawbacks and all",
+                `${clinics.length} licensed clinics compared — fees, drawbacks and all`,
                 "Independent: no clinic pays for its place here",
                 "Free eligibility check — no email, no sign-up",
               ].map((t) => (
                 <li key={t} className="flex items-center gap-3 text-[15px] font-medium text-ink">
                   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="shrink-0">
-                    <circle cx="9" cy="9" r="9" fill="#2F7D4F" opacity="0.15" />
-                    <path d="M5.5 9.5l2.5 2.5 4.5-5" stroke="#1F5C38" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <circle cx="9" cy="9" r="9" fill="#0057D9" opacity="0.12" />
+                    <path d="M5.5 9.5l2.5 2.5 4.5-5" stroke="#0057D9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                   {t}
                 </li>
@@ -160,7 +160,7 @@ export default function Home() {
             <div>
               <Eyebrow label="Where we stand" dark />
               <h2 className="headline mt-5 text-[34px] leading-tight text-cream md:text-[44px]">
-                Independent. <span className="italic text-[#8FBF9B]">Genuinely.</span>
+                Independent. <span className="italic text-[#7FB0FF]">Genuinely.</span>
               </h2>
             </div>
             <div className="space-y-5 text-[16px] leading-[1.75] text-cream/80">

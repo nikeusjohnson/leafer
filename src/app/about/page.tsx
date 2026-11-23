@@ -50,23 +50,23 @@ export default function About() {
       <div className="mt-16 bg-forest px-6 py-12 text-cream md:rounded-3xl md:px-12 md:py-16">
         <div className="grid gap-10 md:grid-cols-[1fr_1.2fr] md:gap-16">
           <h2 className="headline text-[28px] leading-tight text-cream md:text-[34px]">
-            How we keep it <span className="italic text-[#8FBF9B]">honest</span>
+            How we keep it <span className="italic text-[#7FB0FF]">honest</span>
           </h2>
           <ul className="space-y-4 text-[16px] leading-[1.75] text-cream/80">
             <li className="flex gap-3">
-              <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#8FBF9B]" />
+              <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#7FB0FF]" />
               <span>No clinic or pharmacy pays to be listed, ranked, or reviewed on this site.</span>
             </li>
             <li className="flex gap-3">
-              <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#8FBF9B]" />
+              <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#7FB0FF]" />
               <span>We take no referral fees. When you leave here for a clinic, we earn nothing from it.</span>
             </li>
             <li className="flex gap-3">
-              <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#8FBF9B]" />
+              <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#7FB0FF]" />
               <span>Every review includes drawbacks, because every clinic has them.</span>
             </li>
             <li className="flex gap-3">
-              <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#8FBF9B]" />
+              <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#7FB0FF]" />
               <span>We say &quot;the evidence is mixed&quot; when the evidence is mixed — including about cannabis itself.</span>
             </li>
           </ul>

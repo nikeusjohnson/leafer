@@ -62,24 +62,23 @@
   }
 
   .headline {
-    @apply font-serif tracking-[-0.025em] text-ink;
-    font-optical-sizing: auto;
+    @apply font-sans font-extrabold tracking-[-0.03em] text-ink;
   }
 
   .headline em {
-    @apply not-italic font-serif italic text-leaf;
+    @apply not-italic text-leaf;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-leaf px-6 py-3 text-[15px] font-semibold text-cream shadow-soft transition-all duration-fast ease-out hover:-translate-y-0.5 hover:bg-leaf-deep hover:shadow-lift;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-leaf px-7 py-3 text-[15px] font-bold text-cream shadow-soft transition-all duration-fast ease-out hover:-translate-y-0.5 hover:bg-leaf-deep hover:shadow-lift;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl border border-line bg-transparent px-6 py-3 text-[15px] font-semibold text-ink transition-all duration-fast ease-out hover:-translate-y-0.5 hover:border-ink/30 hover:shadow-soft;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink/15 bg-transparent px-7 py-3 text-[15px] font-bold text-ink transition-all duration-fast ease-out hover:-translate-y-0.5 hover:border-leaf hover:text-leaf hover:shadow-soft;
   }
 
   .btn-secondary-dark {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl border border-cream/25 bg-transparent px-6 py-3 text-[15px] font-semibold text-cream transition-all duration-fast ease-out hover:-translate-y-0.5 hover:border-cream/60;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-cream/30 bg-transparent px-7 py-3 text-[15px] font-bold text-cream transition-all duration-fast ease-out hover:-translate-y-0.5 hover:border-cream/70;
   }
 
   .hairline-t {
@@ -87,7 +86,7 @@
   }
 
   .card {
-    @apply rounded-2xl border border-line bg-cream-tint shadow-soft transition-all duration-fast ease-out;
+    @apply rounded-3xl border border-line bg-cream-tint shadow-soft transition-all duration-fast ease-out;
   }
 
   .card-hover {

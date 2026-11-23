@@ -22,7 +22,7 @@ const terms: [string, string][] = [
   ["Terpene", "Aromatic compounds in cannabis that shape each product's character. Patients report different terpene profiles suit different symptoms — the science is still catching up."],
   ["Tolerance", "When the same dose gradually does less. Common with long-term THC use and manageable — see our guide to tolerance and treatment breaks."],
   ["Medical defence", "The legal protection for drivers taking prescribed medicine as directed. It's argued in court after a positive test — it doesn't stop you being tested at the roadside."],
-  ["UK Medical Cannabis Registry", "A research database run by Sapphire Medical Clinics tracking real-world patient outcomes. Much of what we know about UK treatment comes from it."],
+  ["UK Medical Cannabis Registry", "A research database run by Curaleaf Clinic (formerly Sapphire Medical) tracking real-world patient outcomes. Much of what we know about UK treatment comes from it."],
   ["Summary care record", "Your GP-held medical summary. Clinics need it (with your consent) to confirm your diagnosis and treatment history before prescribing."],
 ];
 

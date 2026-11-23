@@ -1,16 +1,8 @@
 import type { Metadata } from "next";
-import { Fraunces, Figtree, IBM_Plex_Mono } from "next/font/google";
+import { Figtree, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  axes: ["opsz"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -46,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-GB"
-      className={`${fraunces.variable} ${figtree.variable} ${plexMono.variable}`}
+      className={`${figtree.variable} ${plexMono.variable}`}
     >
       <body className="flex min-h-dvh flex-col">
         <Header />
