@@ -20,6 +20,10 @@ const config: Config = {
           deep: "#1F5C38",
           tint: "#E3EFE2",
         },
+        sage: {
+          DEFAULT: "#DCE7D2",
+          deep: "#C9DABB",
+        },
         forest: "#0B2A16",
         line: "#E6DECB",
         amber: "#8A6A1F",

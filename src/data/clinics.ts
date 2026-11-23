@@ -2,6 +2,8 @@ export type Clinic = {
   slug: string;
   name: string;
   tag: string;
+  score: number;
+  bestFor: string;
   summary: string;
   initialFee: string;
   followUpFee: string;
@@ -19,6 +21,8 @@ export const clinics: Clinic[] = [
     slug: "lyphe",
     name: "Lyphe Clinic",
     tag: "One of the most established",
+    score: 8.8,
+    bestFor: "A safe all-round choice",
     summary:
       "One of the UK's longest-running medical cannabis clinics, with nationwide video consultations and a broad network of GMC-registered specialists.",
     initialFee: "From £99",
@@ -47,6 +51,8 @@ export const clinics: Clinic[] = [
     slug: "releaf",
     name: "Releaf",
     tag: "Fully online, app-based",
+    score: 9.1,
+    bestFor: "Keeping costs down",
     summary:
       "A fully digital clinic with some of the lowest advertised initial consultation fees in the UK, run largely through its own app.",
     initialFee: "From £79",
@@ -75,6 +81,8 @@ export const clinics: Clinic[] = [
     slug: "mamedica",
     name: "Mamedica",
     tag: "Specialist-led",
+    score: 8.7,
+    bestFor: "Complex conditions",
     summary:
       "An independent specialist clinic with a focus on complex and treatment-resistant conditions, offering appointments seven days a week.",
     initialFee: "From £95",
@@ -103,6 +111,8 @@ export const clinics: Clinic[] = [
     slug: "curaleaf-clinic",
     name: "Curaleaf Clinic",
     tag: "Part of an international group",
+    score: 8.3,
+    bestFor: "Product choice",
     summary:
       "The UK prescribing arm of a large international cannabis company, with a structured patient pathway and a wide range of licensed products.",
     initialFee: "From £100",
@@ -131,6 +141,8 @@ export const clinics: Clinic[] = [
     slug: "sapphire-medical",
     name: "Sapphire Medical Clinics",
     tag: "Research-focused",
+    score: 8.5,
+    bestFor: "Clinical rigour",
     summary:
       "A clinically rigorous clinic that runs the UK Medical Cannabis Registry, with specialists from strong academic and NHS backgrounds.",
     initialFee: "From £150",
@@ -159,6 +171,8 @@ export const clinics: Clinic[] = [
     slug: "alternaleaf",
     name: "Alternaleaf",
     tag: "Patient-experience focused",
+    score: 8.6,
+    bestFor: "A smooth first experience",
     summary:
       "Formerly Integro Medical Clinics, now an online-only service with clear pricing and an emphasis on patient experience.",
     initialFee: "From £99",
@@ -187,6 +201,8 @@ export const clinics: Clinic[] = [
     slug: "zerenia",
     name: "Zerenia Clinic",
     tag: "Large clinic network",
+    score: 8.4,
+    bestFor: "In-person appointments",
     summary:
       "One of the UK's larger medical cannabis clinic networks, with self-referral, multiple locations and broad condition coverage.",
     initialFee: "From £99",
@@ -215,6 +231,8 @@ export const clinics: Clinic[] = [
     slug: "tmcc",
     name: "The Medical Cannabis Clinics (TMCC)",
     tag: "Early UK prescriber",
+    score: 8.0,
+    bestFor: "An experienced team",
     summary:
       "One of the UK's first licensed cannabis prescribers, with specialist-led assessments and a focus on chronic pain and PTSD.",
     initialFee: "From £149",
