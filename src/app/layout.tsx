@@ -1,48 +1,40 @@
 import type { Metadata } from "next";
-import { Figtree, IBM_Plex_Mono } from "next/font/google";
-import "./globals.css";
+import localFont from "next/font/local";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import "./globals.css";
 
-const figtree = Figtree({
-  subsets: ["latin"],
-  variable: "--font-figtree",
-  display: "swap",
-});
-
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-plex-mono",
+const dmSans = localFont({
+  src: "./fonts/dm-sans-latin.woff2",
+  weight: "400 900",
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://leafer.co.uk"),
   title: {
-    default: "Leafer — Plain-English guidance on medical cannabis in the UK",
-    template: "%s — Leafer",
+    default: "Compare UK medical cannabis clinics | Leafer",
+    template: "%s | Leafer",
   },
   description:
-    "Independent, jargon-free information for UK patients: qualifying conditions, honest clinic comparisons, real costs, and how the prescription process actually works.",
-  openGraph: {
-    siteName: "Leafer",
-    locale: "en_GB",
-    type: "website",
-  },
+    "Compare UK medical cannabis clinics, check published consultation fees and find the regulator record for each service. Explore free UK patient guides.",
+  openGraph: { siteName: "Leafer", locale: "en_GB", type: "website" },
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en-GB"
-      className={`${figtree.variable} ${plexMono.variable}`}
-    >
+    <html lang="en-GB" className={dmSans.variable}>
       <body className="flex min-h-dvh flex-col">
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

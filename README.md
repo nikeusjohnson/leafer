@@ -1,50 +1,20 @@
-# Leafer — leafer.co.uk
+# Leafer
 
-Plain-English, independent guidance on medical cannabis in the UK. No jargon, no sales patter, no clinic paying for a good review.
+A UK medical cannabis clinic comparison site built with Next.js 15, TypeScript and Tailwind CSS.
 
-Built with **Next.js 15 (App Router) + TypeScript + Tailwind CSS**. Every page is statically generated — no database, no server code, no tracking.
+## Run locally
 
-## Quick start
-
-```bash
-npm install
-npm run dev     # local dev server
-npm run build   # production build → all 31 pages prerendered
-npm run start   # serve the production build
+```sh
+npm ci
+npm run dev
 ```
 
-## Deploy to Vercel
+Use `npm run build` for the production build and `npm start` to serve it.
 
-1. Push this repo to GitHub.
-2. In Vercel: **Add New → Project → Import** this repository.
-3. Framework is auto-detected as Next.js — no settings to change. Deploy.
-4. Point `leafer.co.uk` at the project under **Settings → Domains**.
+## Updating clinic information
 
-Any static host (Cloudflare Pages, Netlify, GitHub Pages via `next export` config) works too — the site is fully static.
+The directory in `src/data/clinics.ts` supplies the cards, fee table, clinic profiles, homepage examples and sitemap. Listings start in alphabetical order. Patients can also sort by the published starting fee. Leafer does not assign clinic scores or editorial rankings.
 
-## Structure
+For each clinic, record the provider’s published fee schedule, what the starting fee covers, ongoing charges, the name on the relevant regulator’s register, and the register URL. Update the checked date after reviewing the entries. Keep medicines separate from clinic fees. Preserve renamed services with a redirect and use a status page for a withdrawn listing.
 
-```
-src/
-  app/                  # routes: /, /how-it-works, /eligibility, /uk-law, /faq,
-                        # /about, /privacy, /conditions/*, /clinics/*, /guides/*
-  components/           # Header, Footer, EligibilityChecker, FaqList, etc.
-  data/                 # all content lives here — clinics.ts, conditions.ts,
-                        # guides.ts, faqs.ts
-```
-
-Editing content is a data-file job: add an object to `src/data/clinics.ts` and its
-review page, the comparison table, the homepage row and the sitemap all update
-automatically.
-
-## Performance
-
-- Fully static (SSG) — 31 prerendered pages at build time
-- ~103 kB shared JS, 188 B per page; fonts self-hosted via `next/font` (zero external requests)
-- The only client-side JS of note is the eligibility checker and the mobile menu
-
-## Independence & accuracy
-
-Leafer is an information resource, not a medical provider, and nothing on the
-site is medical advice. Clinic fees are published prices at last check — verify
-with clinics directly, and always confirm clinic registration with the CQC.
+Patient guides, condition pages and FAQs live under `src/data`. Bespoke illustrations are in `public/images`. DM Sans is bundled with its licence in `src/app/fonts`.

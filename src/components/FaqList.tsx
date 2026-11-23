@@ -1,4 +1,7 @@
-export type Faq = { q: string; a: string };
+import Link from "next/link";
+import type { Source } from "@/components/ArticleSections";
+
+export type Faq = { q: string; a: string; source?: Source };
 
 export default function FaqList({ faqs }: { faqs: Faq[] }) {
   return (
@@ -27,6 +30,14 @@ export default function FaqList({ faqs }: { faqs: Faq[] }) {
           <p className="mt-3 max-w-prose2 text-[16px] leading-[1.7] text-ink-soft">
             {f.a}
           </p>
+          {f.source && (
+            <Link
+              href={f.source.href}
+              className="link-underline mt-3 inline-block text-[15px] font-semibold"
+            >
+              {f.source.label}
+            </Link>
+          )}
         </details>
       ))}
     </div>

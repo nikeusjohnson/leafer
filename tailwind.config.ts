@@ -6,26 +6,26 @@ const config: Config = {
     extend: {
       colors: {
         cream: {
-          DEFAULT: "#FFFDF4",
-          deep: "#F7F2DE",
+          DEFAULT: "#FFFFFF",
+          deep: "#F0F7F2",
           tint: "#FFFFFF",
         },
         ink: {
-          DEFAULT: "#143C14",
-          soft: "#33512F",
-          muted: "#64755C",
+          DEFAULT: "#103E30",
+          soft: "#35584B",
+          muted: "#50695F",
         },
         leaf: {
-          DEFAULT: "#1F6B2A",
-          deep: "#173F15",
-          tint: "#E9F5DC",
+          DEFAULT: "#0C7753",
+          deep: "#105F41",
+          tint: "#DBF4E5",
         },
         sage: {
-          DEFAULT: "#F0EDDA",
-          deep: "#E3DFC5",
+          DEFAULT: "#DDF4E7",
+          deep: "#C8E8D5",
         },
-        forest: "#0E2A0F",
-        line: "#E5E1CC",
+        forest: "#103C30",
+        line: "#D2E2D6",
         amber: "#8A6A1F",
         amberTint: "#F6EFDA",
         gold: "#F5A623",
@@ -33,12 +33,22 @@ const config: Config = {
         lime: "#C5E47D",
       },
       fontFamily: {
-        serif: ["var(--font-figtree)", "ui-sans-serif", "system-ui", "sans-serif"],
-        sans: ["var(--font-figtree)", "ui-sans-serif", "system-ui", "sans-serif"],
-        mono: ["var(--font-plex-mono)", "ui-monospace", "monospace"],
+        serif: [
+          "var(--font-dm-sans)",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+        ],
+        sans: [
+          "var(--font-dm-sans)",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+        ],
+        mono: ["Consolas", "ui-monospace", "monospace"],
       },
       maxWidth: {
-        site: "72rem",
+        site: "78rem",
         prose2: "44rem",
       },
       boxShadow: {
