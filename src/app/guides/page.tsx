@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Eyebrow from "@/components/Eyebrow";
+import GuideTile from "@/components/GuideTile";
 import { guides } from "@/data/guides";
 
 export const metadata: Metadata = {
@@ -21,27 +21,10 @@ export default function GuidesIndex() {
         rules around driving and travel. Clear answers, honest caveats.
       </p>
 
-      <ul className="mt-12 divide-y divide-line border-y border-line">
-        {guides.map((g, i) => (
+      <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {guides.map((g) => (
           <li key={g.slug}>
-            <Link
-              href={`/guides/${g.slug}`}
-              className="group grid gap-3 py-7 transition-colors duration-fast md:grid-cols-[60px_1fr_auto] md:items-baseline"
-            >
-              <span className="eyebrow-num">{String(i + 1).padStart(2, "0")}</span>
-              <div>
-                <p className="eyebrow">{g.kicker}</p>
-                <h2 className="mt-1.5 font-serif text-[24px] font-semibold tracking-[-0.01em] text-ink transition-colors duration-fast group-hover:text-leaf-deep">
-                  {g.title}
-                </h2>
-                <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-ink-muted">
-                  {g.description}
-                </p>
-              </div>
-              <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-muted">
-                {g.readTime}
-              </span>
-            </Link>
+            <GuideTile guide={g} />
           </li>
         ))}
       </ul>

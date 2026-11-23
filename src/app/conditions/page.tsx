@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Eyebrow from "@/components/Eyebrow";
+import ConditionTile from "@/components/ConditionTile";
 import { conditions } from "@/data/conditions";
 
 export const metadata: Metadata = {
@@ -22,27 +23,10 @@ export default function ConditionsIndex() {
         least two conventional treatments that haven&apos;t worked well enough.
       </p>
 
-      <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {conditions.map((c) => (
           <li key={c.slug}>
-            <Link href={`/conditions/${c.slug}`} className="card card-hover flex h-full flex-col p-6">
-              <div className="flex items-center justify-between gap-3">
-                <h2 className="font-serif text-[21px] font-semibold text-ink">
-                  {c.name}
-                </h2>
-                {c.commonlyPrescribed && (
-                  <span className="shrink-0 rounded-full bg-leaf-tint px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-leaf-deep">
-                    Common
-                  </span>
-                )}
-              </div>
-              <p className="mt-2.5 text-[14px] leading-relaxed text-ink-muted">
-                {c.short}
-              </p>
-              <span className="mt-4 text-[14px] font-semibold text-leaf-deep">
-                Read the guide →
-              </span>
-            </Link>
+            <ConditionTile condition={c} />
           </li>
         ))}
       </ul>

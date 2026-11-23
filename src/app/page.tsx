@@ -4,6 +4,7 @@ import FaqList from "@/components/FaqList";
 import ClinicCard from "@/components/ClinicCard";
 import EligibilityChecker from "@/components/EligibilityChecker";
 import ConditionTile from "@/components/ConditionTile";
+import GuideTile from "@/components/GuideTile";
 import { conditions } from "@/data/conditions";
 import { clinics } from "@/data/clinics";
 import { guides } from "@/data/guides";
@@ -183,41 +184,28 @@ export default function Home() {
 
       {/* Guides */}
       <section className="mx-auto max-w-site px-5 py-16 md:px-8 md:py-20">
-        <div className="grid gap-10 md:grid-cols-[1fr_1.4fr] md:gap-16">
+        <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <Eyebrow num="04" label="Patient guides" />
             <h2 className="headline mt-5 text-[34px] leading-tight md:text-[44px]">
               The questions everyone <em>actually</em> asks
             </h2>
-            <p className="mt-4 max-w-md text-[16px] leading-[1.7] text-ink-soft">
+            <p className="mt-3 max-w-xl text-[16px] leading-[1.7] text-ink-soft">
               Costs, driving, travel, what happens in the room — written for
               patients, not lawyers.
             </p>
-            <Link href="/guides" className="link-underline mt-6 inline-block text-[15px] font-semibold">
-              All guides →
-            </Link>
           </div>
-          <ul className="divide-y divide-line border-y border-line">
-            {guides.map((g) => (
-              <li key={g.slug}>
-                <Link
-                  href={`/guides/${g.slug}`}
-                  className="group flex items-baseline justify-between gap-6 py-5"
-                >
-                  <div>
-                    <p className="eyebrow">{g.kicker}</p>
-                    <h3 className="mt-1.5 font-serif text-[20px] font-semibold text-ink transition-colors duration-fast group-hover:text-leaf-deep">
-                      {g.title}
-                    </h3>
-                  </div>
-                  <span className="shrink-0 font-mono text-[11px] uppercase tracking-[0.12em] text-ink-muted">
-                    {g.readTime}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <Link href="/guides" className="link-underline text-[15px] font-semibold">
+            All guides →
+          </Link>
         </div>
+        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {guides.map((g) => (
+            <li key={g.slug}>
+              <GuideTile guide={g} />
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* FAQ teaser */}
