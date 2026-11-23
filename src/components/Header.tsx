@@ -67,7 +67,13 @@ export default function Header() {
             <Link
               href={href}
               key={href}
-              aria-current={pathname === href ? "page" : undefined}
+              aria-current={
+                pathname === href
+                  ? "page"
+                  : pathname.startsWith(href + "/")
+                    ? "location"
+                    : undefined
+              }
               onClick={() => setOpen(false)}
             >
               {label}

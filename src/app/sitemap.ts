@@ -1,9 +1,10 @@
+import { siteUrl } from "@/data/site";
 import type { MetadataRoute } from "next";
 import { conditions } from "@/data/conditions";
 import { clinics } from "@/data/clinics";
 import { guides } from "@/data/guides";
 
-const base = "https://leafer.co.uk";
+const base = siteUrl.origin;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
@@ -12,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/eligibility",
     "/conditions",
     "/clinics",
+    "/clinics/compare",
     "/guides",
     "/uk-law",
     "/faq",

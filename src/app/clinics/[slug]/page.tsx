@@ -132,6 +132,14 @@ export default async function ClinicPage({ params }: PageProps) {
           <a href={clinic.regulatorUrl} className={styles.link}>
             View the {clinic.regulator} record
           </a>
+          <div className={styles.reviews}>
+            <Link
+              href={`/clinics/compare?a=${clinic.slug}`}
+              className={styles.link}
+            >
+              Compare {clinic.name} with another clinic
+            </Link>
+          </div>
           {clinic.reviewsUrl && (
             <div className={styles.reviews}>
               <a href={clinic.reviewsUrl} className={styles.link}>

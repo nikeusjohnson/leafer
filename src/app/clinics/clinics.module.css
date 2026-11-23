@@ -389,3 +389,104 @@
     gap: 0.65rem;
   }
 }
+
+.cardFormat,
+.resultHint {
+  color: #48614e;
+  font-size: 0.93rem;
+}
+.cardFormat {
+  margin-bottom: 0.65rem;
+}
+.resultHint {
+  margin-top: 0.25rem;
+}
+.pickOption {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  gap: 0.45rem;
+  color: #154a33;
+  font-weight: 700;
+  cursor: pointer;
+}
+.pickOption input {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: #175a39;
+}
+.pickOption:has(input:disabled) {
+  opacity: 0.6;
+  cursor: default;
+}
+.tray {
+  position: sticky;
+  top: 0.5rem;
+  z-index: 4;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem 1.2rem;
+  margin-bottom: 1.1rem;
+  padding: 0.7rem 1rem;
+  border: 1.5px solid #31593e;
+  border-radius: 0.85rem;
+  box-shadow: 0 3px 0 #31593e;
+  background: #f4f7df;
+}
+.tray > div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+.tray > span {
+  font-size: 0.93rem;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.chips button {
+  font-size: 0.9rem;
+  background: white;
+  border: 1px solid #a3b59c;
+  border-radius: 2rem;
+  padding: 0.35rem 0.65rem;
+}
+.chips span {
+  font-size: 1.1rem;
+}
+.tray .btn-primary {
+  min-height: 42px;
+  padding: 0.55rem 1rem;
+}
+.heroArt {
+  border-radius: 1.25rem;
+  border: 1.5px solid #214b36;
+  box-shadow: 3px 4px 0 #214b36;
+}
+@media (max-width: 500px) {
+  .tray {
+    top: 0;
+    gap: 0.4rem;
+  }
+  .tray > div {
+    gap: 0.35rem;
+  }
+  .tray .btn-primary {
+    width: 100%;
+  }
+  .toolbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .toolbar select {
+    font-size: 0.96rem;
+  }
+  .cardBottom {
+    border-top: 1px solid #dce5dd;
+    padding-top: 0.25rem;
+  }
+}

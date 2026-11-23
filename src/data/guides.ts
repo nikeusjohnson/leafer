@@ -1,6 +1,37 @@
 import type { Section } from "@/components/ArticleSections";
 
+export const guideTopics = [
+  {
+    id: "choosing-a-clinic",
+    title: "Choose and compare clinics",
+    short: "Choosing a clinic",
+    intro:
+      "Compare fees, check the service behind a name and plan a move between clinics.",
+    image: "/images/checking-clinic-fees.webp",
+    next: { label: "Compare clinic fees", href: "/clinics" },
+  },
+  {
+    id: "preparing-for-an-appointment",
+    title: "Prepare for an appointment",
+    short: "Appointments and records",
+    intro:
+      "Gather the documents, questions and treatment history your clinician needs.",
+    image: "/images/preparing-a-checklist.webp",
+    next: { label: "Open the eligibility checklist", href: "/eligibility" },
+  },
+  {
+    id: "living-with-a-prescription",
+    title: "Manage ongoing care",
+    short: "Life with a prescription",
+    intro:
+      "Find guidance on medicine reviews, everyday activities and reporting a problem.",
+    image: "/images/appointment-discussion.webp",
+    next: { label: "Read patient questions", href: "/faq" },
+  },
+] as const;
+
 export type Guide = {
+  topic: (typeof guideTopics)[number]["id"];
   slug: string;
   title: string;
   description: string;
@@ -48,7 +79,121 @@ export const references = {
 
 export const guides: Guide[] = [
   {
+    slug: "membership-or-pay-as-you-go",
+    topic: "choosing-a-clinic",
+    title: "Monthly membership or pay as you go?",
+    kicker: "Clinic costs",
+    readTime: "4 min read",
+    description:
+      "Compare the same appointments over a year and see when the totals change.",
+    intro:
+      "A monthly payment spreads costs across the year. A pay-as-you-go plan ties them to appointments. Start with the reviews your clinician expects you to need, then price both plans for that same care.",
+    sections: [
+      {
+        heading: "Set the comparison period",
+        paragraphs: [
+          "Ask how long a membership commits you for, which appointments it includes and what happens if your care ends early. For pay as you go, ask for separate prices for the first consultation and each follow-up.",
+          "For example, Alternaleaf publishes a minimum 12-month membership covering required appointments. It charges separately for some extra appointments. Its pay-as-you-go consultation fee excludes medicines. Read the terms for the specific clinic you are considering.",
+        ],
+        sources: [
+          {
+            label: "Alternaleaf membership terms",
+            href: "https://support.alternaleaf.co.uk/hc/en-gb/articles/41029780057617-Can-you-tell-me-more-about-your-membership-scheme",
+          },
+          {
+            label: "Alternaleaf pay-as-you-go terms",
+            href: "https://support.alternaleaf.co.uk/hc/en-gb/articles/40678801698321-How-much-does-a-PAYG-consult-cost",
+          },
+        ],
+      },
+      {
+        heading: "Compare a worked example",
+        paragraphs: [
+          "Imagine a clinic offers a 12-month membership at £12 a month, with the first appointment and all required reviews included. Its alternative is £45 for the first appointment and £30 for each review. Both figures below cover appointments only. These are invented prices to show the arithmetic.",
+        ],
+        table: {
+          caption: "Illustrative appointment fees over 12 months",
+          columns: ["Care over the year", "Membership", "Pay as you go"],
+          rows: [
+            [
+              "First visit and two reviews",
+              "£12 × 12 = £144",
+              "£45 + £60 = £105",
+            ],
+            [
+              "First visit and four reviews",
+              "£12 × 12 = £144",
+              "£45 + £120 = £165",
+            ],
+          ],
+        },
+        callout:
+          "In the first scenario, pay as you go costs £39 less. In the second, membership costs £21 less. Use the review schedule advised for your care when comparing real quotes.",
+      },
+      {
+        heading: "Check what changes the total",
+        checklist: [
+          "Get the monthly price, minimum term and any joining fee in writing.",
+          "Mark which reviews are included and ask about extra or missed appointments.",
+          "Check repeat prescription, delivery, equipment and letter charges. Get a separate quote for any medicine.",
+          "Ask when payments stop if you transfer or treatment ends, and when any cancellation takes effect.",
+        ],
+        sources: [references.fees],
+      },
+    ],
+  },
+  {
+    slug: "transferring-clinics",
+    topic: "choosing-a-clinic",
+    title: "Moving to a different clinic",
+    kicker: "Changing clinics",
+    readTime: "3 min read",
+    description:
+      "Coordinate assessments, discharge paperwork, outstanding fees and who to contact during the handover.",
+    intro:
+      "Before leaving your current clinic, ask the receiving clinic to explain its assessment, paperwork and timing. Get both teams to confirm who is responsible for your care during the change.",
+    sections: [
+      {
+        heading: "Check the receiving clinic’s requirements",
+        paragraphs: [
+          "Clinics publish different transfer instructions. Mamedica asks for details of the first and latest prescription from the previous clinic, along with a discharge letter. Alternaleaf advises patients to request discharge after approval at the new appointment and requires the letter before releasing a first prescription.",
+          "Ask the receiving service what it can confirm before you request discharge. Share your current prescription and contact both clinical teams if timing could leave you without care.",
+        ],
+        sources: [
+          {
+            label: "Mamedica transfer FAQs",
+            href: "https://mamedica.co.uk/faqs",
+          },
+          {
+            label: "Alternaleaf transfer process",
+            href: "https://www.alternaleaf.co.uk/transfer",
+          },
+        ],
+      },
+      {
+        heading: "Request the paperwork",
+        checklist: [
+          "Ask which prescriptions, clinician letters and GP records are needed, and how recent they must be.",
+          "Confirm the secure route for sending copies. Keep a copy of your own request and the date you sent it.",
+          "Find out when the current service can issue a discharge letter, whether it costs anything and who receives it.",
+        ],
+      },
+      {
+        heading: "Agree the handover dates and costs",
+        checklist: [
+          "Write down the dates of the last review, the new assessment and the point at which each clinic’s responsibility changes.",
+          "Ask the current clinic about outstanding invoices, membership notice periods and any appointments already booked.",
+          "Confirm any transfer fee, follow-up charge and separate pharmacy costs with the receiving clinic.",
+          "Ask both teams whom to call about side effects or a prescription query while the transfer is under way.",
+        ],
+        callout:
+          "If you have an appointment or supply concern during a transfer, ask your treating team for a plan specific to you. Agree the timing before cancelling an appointment or changing a medicine.",
+      },
+    ],
+  },
+  {
     slug: "costs",
+    topic: "choosing-a-clinic",
     title: "How to compare clinic fees",
     description:
       "Price the first appointment, ongoing care and extras on the same basis.",
@@ -90,6 +235,7 @@ export const guides: Guide[] = [
   },
   {
     slug: "checking-a-clinic",
+    topic: "choosing-a-clinic",
     title: "How to check a clinic’s registration",
     description:
       "Match the service, location and specialist to the public records.",
@@ -136,6 +282,7 @@ export const guides: Guide[] = [
   },
   {
     slug: "first-consultation",
+    topic: "preparing-for-an-appointment",
     title: "Prepare for a first appointment",
     description:
       "What to gather and what to ask before paying for a consultation.",
@@ -154,6 +301,15 @@ export const guides: Guide[] = [
         sources: [references.records],
       },
       {
+        heading: "Questions to take into the room",
+        checklist: [
+          "What options fit my symptoms and treatment history?",
+          "Which benefits and unwanted effects should I look for, and how will we review them?",
+          "Which costs come from the clinic and which come from the pharmacy?",
+          "Who can I contact between reviews, and who will send my GP a summary?",
+        ],
+      },
+      {
         heading: "Use the appointment to make a decision",
         paragraphs: [
           "Ask what other treatments could suit your circumstances, how the clinician would judge any benefit and how you would contact the team about side effects. The specialist may suggest another approach. Agree who will send a summary and when you should hear back.",
@@ -164,6 +320,7 @@ export const guides: Guide[] = [
   },
   {
     slug: "driving",
+    topic: "living-with-a-prescription",
     title: "Driving with a prescription",
     description:
       "Understand impairment, prescribed medicines and the different rules across the UK.",
@@ -191,6 +348,7 @@ export const guides: Guide[] = [
   },
   {
     slug: "travelling",
+    topic: "living-with-a-prescription",
     title: "Taking prescribed medicine abroad",
     description:
       "Check each destination and transit country before you travel.",
@@ -217,6 +375,7 @@ export const guides: Guide[] = [
   },
   {
     slug: "flower-vs-oil",
+    topic: "living-with-a-prescription",
     title: "Understanding your prescription format",
     description:
       "Questions about the form, instructions and equipment for a prescribed medicine.",
@@ -242,6 +401,7 @@ export const guides: Guide[] = [
   },
   {
     slug: "cbd-vs-medical-cannabis",
+    topic: "living-with-a-prescription",
     title: "CBD products and prescribed medicines",
     description:
       "What a shop label tells you and what to discuss with your pharmacist.",
@@ -267,6 +427,7 @@ export const guides: Guide[] = [
   },
   {
     slug: "side-effects",
+    topic: "living-with-a-prescription",
     title: "Reporting side effects",
     description:
       "Who to contact and what information to keep when a medicine causes problems.",
@@ -298,6 +459,7 @@ export const guides: Guide[] = [
   },
   {
     slug: "talking-to-your-gp",
+    topic: "preparing-for-an-appointment",
     title: "Getting the right medical records",
     description:
       "Find out what to ask your GP surgery for and how to share it.",
@@ -325,6 +487,7 @@ export const guides: Guide[] = [
   },
   {
     slug: "tolerance-breaks",
+    topic: "living-with-a-prescription",
     title: "When to review your treatment",
     description:
       "Prepare for a discussion if the effects or drawbacks of a medicine change.",
@@ -352,4 +515,24 @@ export const guides: Guide[] = [
 
 export function getGuide(slug: string) {
   return guides.find((guide) => guide.slug === slug);
+}
+
+const nextReading: Record<string, readonly [string, string]> = {
+  costs: ["membership-or-pay-as-you-go", "checking-a-clinic"],
+  "membership-or-pay-as-you-go": ["costs", "transferring-clinics"],
+  "checking-a-clinic": ["costs", "first-consultation"],
+  "transferring-clinics": ["talking-to-your-gp", "checking-a-clinic"],
+  "first-consultation": ["talking-to-your-gp", "costs"],
+  "talking-to-your-gp": ["first-consultation", "transferring-clinics"],
+  driving: ["side-effects", "travelling"],
+  travelling: ["driving", "flower-vs-oil"],
+  "flower-vs-oil": ["side-effects", "cbd-vs-medical-cannabis"],
+  "cbd-vs-medical-cannabis": ["first-consultation", "flower-vs-oil"],
+  "side-effects": ["tolerance-breaks", "driving"],
+  "tolerance-breaks": ["side-effects", "talking-to-your-gp"],
+};
+
+export function relatedGuides(guide: Guide): Guide[] {
+  const slugs = nextReading[guide.slug] ?? [];
+  return slugs.map(getGuide).filter((item): item is Guide => Boolean(item));
 }

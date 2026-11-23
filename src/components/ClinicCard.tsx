@@ -2,7 +2,13 @@ import Link from "next/link";
 import type { Clinic } from "@/data/clinics";
 import styles from "@/app/clinics/clinics.module.css";
 
-export default function ClinicCard({ clinic }: { clinic: Clinic }) {
+export default function ClinicCard({
+  clinic,
+  comparison,
+}: {
+  clinic: Clinic;
+  comparison: React.ReactNode;
+}) {
   return (
     <article className={styles.card}>
       <div className={styles.cardIntro}>
@@ -22,8 +28,9 @@ export default function ClinicCard({ clinic }: { clinic: Clinic }) {
           <dd>{clinic.followUpFee}</dd>
         </div>
       </dl>
+      <p className={styles.cardFormat}>{clinic.format}</p>
       <div className={styles.cardBottom}>
-        <span>{clinic.format}</span>
+        {comparison}
         <Link
           className={styles.link}
           href={`/clinics/${clinic.slug}`}

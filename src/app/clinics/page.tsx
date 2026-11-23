@@ -24,7 +24,8 @@ export default function ClinicsIndex() {
             <h1>Compare UK clinics</h1>
             <p className={styles.lead}>
               See what a first appointment costs, how follow-ups are billed and
-              where to check each clinic’s registration.
+              where to check each clinic’s registration. Select any two to
+              compare the full terms side by side.
             </p>
             <p className={styles.checked}>
               Fees checked <time dateTime="2026-11-23">{feesChecked}</time>
@@ -32,7 +33,7 @@ export default function ClinicsIndex() {
           </div>
           <div className={styles.heroArt}>
             <Image
-              src="/images/guide-appointments.webp"
+              src="/images/checking-clinic-fees.webp"
               width={720}
               height={480}
               sizes="(max-width: 760px) 0px, 22vw"

@@ -1,36 +1,67 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import GuideTile from "@/components/GuideTile";
-import { guides } from "@/data/guides";
+import { guideTopics, guides } from "@/data/guides";
+import styles from "./guides.module.css";
 
 export const metadata: Metadata = {
   title: "Patient guides",
   description:
-    "Practical guides to UK clinic costs, records, consultations, driving and travel.",
+    "Compare clinic fees, plan a transfer, prepare for an appointment and find guidance on living with a prescription.",
 };
-const featured = ["costs", "talking-to-your-gp", "first-consultation"];
-const ordered = [
-  ...featured.flatMap((slug) => guides.filter((guide) => guide.slug === slug)),
-  ...guides.filter((guide) => !featured.includes(guide.slug)),
-];
 
 export default function GuidesIndex() {
   return (
-    <section className="mx-auto max-w-site px-5 py-14 md:px-8 md:py-20">
-      <p className="eyebrow">Patient guides</p>
-      <h1 className="headline mt-4 max-w-3xl text-[40px] leading-[1.05] md:text-[56px]">
-        Before you book a clinic
-      </h1>
-      <p className="mt-5 max-w-2xl text-[18px] leading-relaxed text-ink-soft">
-        Work out what a fee covers, find the right records and prepare for a
-        conversation with your specialist.
-      </p>
-      <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {ordered.map((g) => (
-          <li key={g.slug}>
-            <GuideTile guide={g} />
-          </li>
+    <>
+      <header className={styles.mast}>
+        <div className={`site-wrap ${styles.mastInner}`}>
+          <p className="eyebrow">Patient guides</p>
+          <h1>Your guide to UK clinic care</h1>
+          <p className={styles.intro}>
+            From comparing two fee schedules to arranging a handover between
+            clinics, find the guide for the decision in front of you.
+          </p>
+          <nav className={styles.topicNav} aria-label="Browse by topic">
+            {guideTopics.map((topic) => (
+              <a href={`#${topic.id}`} key={topic.id}>
+                {topic.short}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </header>
+      <div className="site-wrap">
+        {guideTopics.map((topic) => (
+          <section
+            className={styles.group}
+            key={topic.id}
+            id={topic.id}
+            aria-labelledby={`heading-${topic.id}`}
+          >
+            <div>
+              <Image
+                className={styles.groupArt}
+                src={topic.image}
+                alt=""
+                width={720}
+                height={480}
+                sizes="(max-width: 760px) 100vw, 35vw"
+              />
+              <h2 id={`heading-${topic.id}`}>{topic.title}</h2>
+              <p className={styles.groupDescription}>{topic.intro}</p>
+            </div>
+            <ul>
+              {guides
+                .filter((guide) => guide.topic === topic.id)
+                .map((guide) => (
+                  <li key={guide.slug}>
+                    <GuideTile guide={guide} />
+                  </li>
+                ))}
+            </ul>
+          </section>
         ))}
-      </ul>
-    </section>
+      </div>
+    </>
   );
 }

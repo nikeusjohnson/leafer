@@ -1,3 +1,4 @@
+import { siteUrl } from "@/data/site";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Header from "@/components/Header";
@@ -12,7 +13,7 @@ const dmSans = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://leafer.co.uk"),
+  metadataBase: siteUrl,
   title: {
     default: "Compare UK medical cannabis clinics | Leafer",
     template: "%s | Leafer",
