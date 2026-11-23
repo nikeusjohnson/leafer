@@ -3,6 +3,7 @@ import Eyebrow from "@/components/Eyebrow";
 import FaqList from "@/components/FaqList";
 import ClinicCard from "@/components/ClinicCard";
 import EligibilityChecker from "@/components/EligibilityChecker";
+import ConditionTile from "@/components/ConditionTile";
 import { conditions } from "@/data/conditions";
 import { clinics } from "@/data/clinics";
 import { guides } from "@/data/guides";
@@ -140,13 +141,10 @@ export default function Home() {
               All conditions →
             </Link>
           </div>
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {conditions.map((c) => (
               <li key={c.slug}>
-                <Link href={`/conditions/${c.slug}`} className="card card-hover block h-full p-5">
-                  <h3 className="font-serif text-[19px] font-semibold text-ink">{c.name}</h3>
-                  <p className="mt-2 text-[14px] leading-relaxed text-ink-muted">{c.short}</p>
-                </Link>
+                <ConditionTile condition={c} />
               </li>
             ))}
           </ul>
