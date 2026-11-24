@@ -1,5 +1,6 @@
 const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle")!;
 const nav = document.getElementById("site-nav")!;
+toggle.disabled = false;
 function setOpen(open: boolean) {
   toggle.setAttribute("aria-expanded", String(open));
   toggle.setAttribute("aria-label", open ? "Close menu" : "Menu");

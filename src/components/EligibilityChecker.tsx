@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useLayoutEffect, useState } from "preact/hooks";
 
 const questions = [
   {
@@ -37,6 +37,8 @@ const treatmentAdvice = [
 
 export default function EligibilityChecker() {
   const [answers, setAnswers] = useState<number[]>([]);
+  const [ready, setReady] = useState(false);
+  useLayoutEffect(() => setReady(true), []);
   const step = answers.length;
   const outsideUK = answers[0] === 1;
   const complete = outsideUK || step === questions.length;
@@ -92,7 +94,7 @@ export default function EligibilityChecker() {
             <p className="eyebrow">
               Question {step + 1} of {questions.length}
             </p>
-            <fieldset className="mt-5">
+            <fieldset className="mt-5" disabled={!ready}>
               <legend className="headline text-[24px] md:text-[30px]">
                 {questions[step].title}
               </legend>

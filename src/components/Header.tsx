@@ -15,6 +15,7 @@ export default function Header({ pathname }: { pathname: string }) {
         <button
           type="button"
           className="nav-toggle"
+          disabled
           aria-label="Menu"
           aria-controls="site-nav"
           aria-expanded="false"

@@ -1,11 +1,11 @@
-import { useEffect, useState } from "preact/hooks";
+import { useLayoutEffect, useState } from "preact/hooks";
 import ClinicCard from "@/components/ClinicCard";
 import type { Clinic } from "@/data/clinics";
 import styles from "@/app/clinics/clinics.module.css";
 
 export default function ClinicBrowser({ clinics }: { clinics: Clinic[] }) {
-  const [query, setQuery] = useState("");
-  useEffect(() => {
+  const [query, setQuery] = useState<string | null>(null);
+  useLayoutEffect(() => {
     const sync = () => setQuery(location.search);
     sync();
     window.addEventListener("popstate", sync);
@@ -15,7 +15,8 @@ export default function ClinicBrowser({ clinics }: { clinics: Clinic[] }) {
       window.removeEventListener("pageshow", sync);
     };
   }, []);
-  const params = new URLSearchParams(query);
+  const ready = query !== null;
+  const params = new URLSearchParams(query ?? "");
   const search = params.get("q") || "";
   const format = params.get("format") === "inperson" ? "inperson" : "all";
   const sort = params.get("sort") === "price" ? "price" : "name";
@@ -50,7 +51,7 @@ export default function ClinicBrowser({ clinics }: { clinics: Clinic[] }) {
           type="checkbox"
           aria-label={`Compare ${clinic.name}`}
           checked={chosen}
-          disabled={!chosen && selection.length === 2}
+          disabled={!ready || (!chosen && selection.length === 2)}
           onChange={() => choose(clinic)}
         />
         Compare
@@ -83,6 +84,7 @@ export default function ClinicBrowser({ clinics }: { clinics: Clinic[] }) {
           Find a clinic
           <input
             type="search"
+            disabled={!ready}
             value={search}
             placeholder="Search by clinic name"
             onInput={(e) => update({ q: e.currentTarget.value })}
@@ -91,6 +93,7 @@ export default function ClinicBrowser({ clinics }: { clinics: Clinic[] }) {
         <label>
           Appointment format
           <select
+            disabled={!ready}
             value={format}
             onChange={(e) =>
               update({ format: e.currentTarget.value === "all" ? "" : e.currentTarget.value })
@@ -103,6 +106,7 @@ export default function ClinicBrowser({ clinics }: { clinics: Clinic[] }) {
         <label>
           Sort by
           <select
+            disabled={!ready}
             value={sort}
             onChange={(e) =>
               update({ sort: e.currentTarget.value === "name" ? "" : e.currentTarget.value })
@@ -140,6 +144,7 @@ export default function ClinicBrowser({ clinics }: { clinics: Clinic[] }) {
           <button
             type="button"
             aria-pressed={!table}
+            disabled={!ready}
             onClick={() => update({ view: "" })}
           >
             Cards
@@ -147,6 +152,7 @@ export default function ClinicBrowser({ clinics }: { clinics: Clinic[] }) {
           <button
             type="button"
             aria-pressed={table}
+            disabled={!ready}
             onClick={() => update({ view: "table" })}
           >
             Table
