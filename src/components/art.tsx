@@ -6,7 +6,7 @@ export const TINT = "#E9F5DC";
 export const SUN = "#F6E35C";
 export const WHITE = "#FFFFFF";
 
-export function PersonArt({ children }: { children?: React.ReactNode }) {
+export function PersonArt({ children }: { children?: import("preact").ComponentChildren }) {
   return (
     <svg viewBox="0 0 120 96" fill="none" aria-hidden="true" className="mx-auto h-24 w-auto">
       {/* backdrop blob */}

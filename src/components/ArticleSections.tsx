@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 export type Source = { label: string; href: string };
 export type Section = {
@@ -112,12 +111,12 @@ export default function ArticleSections({ sections }: { sections: Section[] }) {
             >
               {section.sources.map((source) => (
                 <li key={source.href}>
-                  <Link
+                  <a
                     href={source.href}
                     className="link-underline text-[15px] font-semibold"
                   >
                     {source.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

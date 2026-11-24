@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 export default function NotFound() {
   return (
@@ -11,9 +10,9 @@ export default function NotFound() {
         The link might be old, or the page might have moved. The homepage is a
         good place to start again.
       </p>
-      <Link href="/" className="btn-primary mt-8">
+      <a href="/" className="btn-primary mt-8">
         Back to the homepage
-      </Link>
+      </a>
     </section>
   );
 }

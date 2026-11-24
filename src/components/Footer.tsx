@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Logo from "./Logo";
 
 const columns = [
@@ -49,7 +48,7 @@ export default function Footer() {
               <ul>
                 {column.links.map(([href, name]) => (
                   <li key={href}>
-                    <Link href={href}>{name}</Link>
+                    <a href={href}>{name}</a>
                   </li>
                 ))}
               </ul>

@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import type { PageMeta } from "@/page-meta";
+import Image from "@/components/Image";
 import ClinicBrowser from "@/components/ClinicBrowser";
 import { clinics, feesChecked } from "@/data/clinics";
 import styles from "./clinics.module.css";
 
-export const metadata: Metadata = {
+export const metadata: PageMeta = {
   title: "Compare UK medical cannabis clinics",
   description:
     "Compare published clinic fees, subscription terms and appointment formats, with direct links to provider prices and UK regulator records.",
@@ -18,7 +17,7 @@ export default function ClinicsIndex() {
         <div className={styles.wrap + " " + styles.heroGrid}>
           <div>
             <nav aria-label="Breadcrumb" className={styles.crumb}>
-              <Link href="/">Home</Link>
+              <a href="/">Home</a>
               <span aria-hidden="true">/</span>Clinic comparison
             </nav>
             <h1>Compare UK clinics</h1>
@@ -43,7 +42,7 @@ export default function ClinicsIndex() {
         </div>
       </header>
       <div className={styles.wrap}>
-        <ClinicBrowser clinics={clinics} />
+        <div id="clinic-browser"><ClinicBrowser clinics={clinics} /></div>
         <section className={styles.notes}>
           <h2>How to read the fees</h2>
           <p>
@@ -58,9 +57,9 @@ export default function ClinicsIndex() {
             (CQC). In Wales we use Healthcare Inspectorate Wales (HIW). A
             clinician assesses whether treatment is suitable.
           </p>
-          <Link href="/guides/costs" className={styles.link}>
+          <a href="/guides/costs" className={styles.link}>
             Read the guide to treatment costs
-          </Link>
+          </a>
         </section>
       </div>
     </>

@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import type { PageMeta } from "@/page-meta";
 import Eyebrow from "@/components/Eyebrow";
 
-export const metadata: Metadata = {
+export const metadata: PageMeta = {
   title: "Privacy policy",
   description:
     "How Leafer handles your data — which is to say, as little as possible.",

@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+import type { PageMeta } from "@/page-meta";
 import ArticleSections from "@/components/ArticleSections";
 import { references } from "@/data/guides";
 
-export const metadata: Metadata = {
+export const metadata: PageMeta = {
   title: "About Leafer",
   description:
     "How Leafer compares UK private clinic fees and links them to registration records.",

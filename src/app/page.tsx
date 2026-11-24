@@ -1,5 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from "@/components/Image";
 import FaqList from "@/components/FaqList";
 import ComparePicker from "@/components/ComparePicker";
 import { clinics, feesChecked, getClinic } from "@/data/clinics";
@@ -49,12 +48,12 @@ export default function Home() {
               registration.
             </p>
             <div className="hero-actions">
-              <Link className="btn-primary hero-cta" href="/clinics">
+              <a className="btn-primary hero-cta" href="/clinics">
                 Explore {clinics.length} clinics
-              </Link>
-              <Link className="text-link" href="#compare-two">
+              </a>
+              <a className="text-link" href="#compare-two">
                 Compare two clinics
-              </Link>
+              </a>
             </div>
           </div>
           <div className="hero-illustration">
@@ -88,13 +87,13 @@ export default function Home() {
             <p className="section-label">Before you book</p>
             <h2>Your first clinic appointment</h2>
           </div>
-          <Link href="/guides" className="text-link">
+          <a href="/guides" className="text-link">
             All patient guides
-          </Link>
+          </a>
         </div>
         <div className="path-grid">
           {paths.map((path) => (
-            <Link key={path.href} href={path.href} className="path-card">
+            <a key={path.href} href={path.href} className="path-card">
               <div className="path-image">
                 <Image
                   src={`/images/home/${path.image}.webp`}
@@ -108,7 +107,7 @@ export default function Home() {
                 <h3>{path.title}</h3>
                 <p>{path.text}</p>
               </div>
-            </Link>
+            </a>
           ))}
         </div>
       </section>
@@ -122,19 +121,19 @@ export default function Home() {
               all appear as the starting price. These two published options show
               why follow-up fees matter.
             </p>
-            <Link
+            <a
               className="text-link"
               href={`/clinics/compare?a=${payPerVisit.slug}&b=${bundled.slug}`}
             >
               Compare these two plans
-            </Link>
+            </a>
           </div>
           <div>
             <div className="fee-examples">
               {[payPerVisit, bundled].map((clinic) => (
                 <article key={clinic.slug}>
                   <h3>
-                    <Link href={`/clinics/${clinic.slug}`}>{clinic.name}</Link>
+                    <a href={`/clinics/${clinic.slug}`}>{clinic.name}</a>
                   </h3>
                   <dl>
                     <div>
@@ -162,9 +161,9 @@ export default function Home() {
         <div>
           <p className="section-label">Common questions</p>
           <h2>Choosing a clinic</h2>
-          <Link href="/faq" className="text-link">
+          <a href="/faq" className="text-link">
             Read all FAQs
-          </Link>
+          </a>
         </div>
         <FaqList faqs={faqs.slice(0, 4)} />
       </section>

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { Clinic } from "@/data/clinics";
 import styles from "@/app/clinics/clinics.module.css";
 
@@ -7,14 +6,14 @@ export default function ClinicCard({
   comparison,
 }: {
   clinic: Clinic;
-  comparison: React.ReactNode;
+  comparison: import("preact").ComponentChildren;
 }) {
   return (
     <article className={styles.card}>
       <div className={styles.cardIntro}>
         <p className={styles.model}>{clinic.tag}</p>
         <h3>
-          <Link href={`/clinics/${clinic.slug}`}>{clinic.name}</Link>
+          <a href={`/clinics/${clinic.slug}`}>{clinic.name}</a>
         </h3>
         <p className={styles.description}>{clinic.summary}</p>
       </div>
@@ -31,13 +30,13 @@ export default function ClinicCard({
       <p className={styles.cardFormat}>{clinic.format}</p>
       <div className={styles.cardBottom}>
         {comparison}
-        <Link
+        <a
           className={styles.link}
           href={`/clinics/${clinic.slug}`}
           aria-label={`View fees and sources for ${clinic.name}`}
         >
           Fees and sources
-        </Link>
+        </a>
       </div>
     </article>
   );

@@ -1,26 +1,24 @@
-import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import type { PageMeta } from "@/page-meta";
+import Image from "@/components/Image";
 import ArticleSections, { sectionAnchor } from "@/components/ArticleSections";
 import GuideTile from "@/components/GuideTile";
 import { getGuide, guides, guideTopics, relatedGuides } from "@/data/guides";
 import styles from "../guides.module.css";
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = { params: { slug: string } };
 
-export function generateStaticParams() {
+export function slugs() {
   return guides.map(({ slug }) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const guide = getGuide((await params).slug);
+export function pageMeta({ params }: Props): PageMeta {
+  const guide = getGuide(params.slug);
   return guide ? { title: guide.title, description: guide.description } : {};
 }
 
-export default async function GuidePage({ params }: Props) {
-  const guide = getGuide((await params).slug);
-  if (!guide) notFound();
+export default function GuidePage({ params }: Props) {
+  const guide = getGuide(params.slug);
+  if (!guide) throw new Error("Missing page record");
   const topic = guideTopics.find(({ id }) => id === guide.topic)!;
   const related = relatedGuides(guide);
   return (
@@ -28,9 +26,9 @@ export default async function GuidePage({ params }: Props) {
       <header className={styles.articleHeader}>
         <div className="site-wrap">
           <nav aria-label="Breadcrumb" className={styles.breadcrumb}>
-            <Link href="/guides">Patient guides</Link>
+            <a href="/guides">Patient guides</a>
             <span aria-hidden="true">/</span>
-            <Link href={`/guides#${topic.id}`}>{topic.short}</Link>
+            <a href={`/guides#${topic.id}`}>{topic.short}</a>
           </nav>
           <div className={styles.articleLead}>
             <div>
@@ -68,9 +66,9 @@ export default async function GuidePage({ params }: Props) {
         </nav>
         <div>
           <ArticleSections sections={guide.sections} />
-          <Link href={topic.next.href} className="btn-primary mt-8">
+          <a href={topic.next.href} className="btn-primary mt-8">
             {topic.next.label}
-          </Link>
+          </a>
         </div>
       </div>
       <section className={`site-wrap ${styles.related}`}>
@@ -82,9 +80,9 @@ export default async function GuidePage({ params }: Props) {
             </li>
           ))}
         </ul>
-        <Link className="link-underline mt-6 inline-block" href="/guides">
+        <a className="link-underline mt-6 inline-block" href="/guides">
           Browse all patient guides
-        </Link>
+        </a>
       </section>
     </article>
   );

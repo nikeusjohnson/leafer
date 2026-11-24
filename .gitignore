@@ -29,3 +29,7 @@ next-env.d.ts
 
 # local preview debug log
 preview-debug.log
+
+# Eleventy output and template build cache
+/_site/
+/.cache/

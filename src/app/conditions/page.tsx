@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+import type { PageMeta } from "@/page-meta";
 import ConditionTile from "@/components/ConditionTile";
 import { conditions } from "@/data/conditions";
 
-export const metadata: Metadata = {
+export const metadata: PageMeta = {
   title: "Condition guides",
   description:
     "Condition-specific guidance and questions to take to a clinician.",

@@ -1,17 +1,16 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import type { PageMeta } from "@/page-meta";
 import ComparePicker from "@/components/ComparePicker";
 import { clinics, feesChecked, getClinic, type Clinic } from "@/data/clinics";
 import styles from "./compare.module.css";
 
-export const metadata: Metadata = {
+export const metadata: PageMeta = {
   title: "Compare two clinics side by side",
   description:
     "Choose two UK medical cannabis clinics to compare appointment charges, ongoing fees, pharmacy costs and registration.",
   alternates: { canonical: "/clinics/compare" },
 };
 
-const fields: { label: string; render: (clinic: Clinic) => React.ReactNode }[] =
+const fields: { label: string; render: (clinic: Clinic) => import("preact").ComponentChildren }[] =
   [
     {
       label: "Starting fee",
@@ -42,12 +41,11 @@ const fields: { label: string; render: (clinic: Clinic) => React.ReactNode }[] =
     },
   ];
 
-export default async function ComparePage({
-  searchParams,
+export default function ComparePage({
+  query = {},
 }: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
+  query?: { a?: string; b?: string };
 }) {
-  const query = await searchParams;
   const first = getClinic(typeof query.a === "string" ? query.a : "");
   const candidate = getClinic(typeof query.b === "string" ? query.b : "");
   const second = candidate?.slug === first?.slug ? undefined : candidate;
@@ -57,7 +55,7 @@ export default async function ComparePage({
       <header className={styles.header}>
         <div className="site-wrap">
           <nav aria-label="Breadcrumb">
-            <Link href="/clinics">Clinic directory</Link> / Side-by-side
+            <a href="/clinics">Clinic directory</a> / Side-by-side
             comparison
           </nav>
           <h1>Compare two clinics</h1>
@@ -81,7 +79,6 @@ export default async function ComparePage({
             choices={clinics.map(({ slug, name }) => ({ slug, name }))}
             first={first?.slug}
             second={second?.slug}
-            compact
           />
         </details>
         {pair.length > 0 ? (
@@ -99,7 +96,7 @@ export default async function ComparePage({
                   <td aria-hidden="true" />
                   {pair.map((c) => (
                     <th key={c.slug} scope="col">
-                      <Link href={`/clinics/${c.slug}`}>{c.name}</Link>
+                      <a href={`/clinics/${c.slug}`}>{c.name}</a>
                     </th>
                   ))}
                 </tr>
@@ -128,19 +125,19 @@ export default async function ComparePage({
                 ? "Your first choice is ready. Choose a different clinic in the other field to see both profiles together."
                 : "Select two names above to see appointment fees, subscription terms, pharmacy charges and regulator links."}
             </p>
-            <Link href="/clinics" className="text-link">
+            <a href="/clinics" className="text-link">
               Browse all {clinics.length} clinics
-            </Link>
+            </a>
           </section>
         )}
         <aside className={styles.help}>
           <strong>Comparing a subscription with a one-off fee?</strong>{" "}
-          <Link
+          <a
             className="text-link"
             href="/guides/membership-or-pay-as-you-go"
           >
             Work through a plan comparison
-          </Link>
+          </a>
         </aside>
       </div>
     </>

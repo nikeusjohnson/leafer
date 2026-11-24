@@ -1,7 +1,4 @@
-"use client";
-
-import Link from "next/link";
-import { useState } from "react";
+import { useState } from "preact/hooks";
 
 const questions = [
   {
@@ -77,15 +74,15 @@ export default function EligibilityChecker() {
                   </li>
                 </ul>
                 <div className="mt-6 flex flex-wrap gap-4">
-                  <Link
+                  <a
                     href="/guides/talking-to-your-gp"
                     className="btn-primary"
                   >
                     Find your medical records
-                  </Link>
-                  <Link href="/clinics" className="btn-secondary">
+                  </a>
+                  <a href="/clinics" className="btn-secondary">
                     Compare clinic fees
-                  </Link>
+                  </a>
                 </div>
               </>
             )}

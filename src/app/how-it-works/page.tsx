@@ -1,7 +1,6 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import type { PageMeta } from "@/page-meta";
 
-export const metadata: Metadata = {
+export const metadata: PageMeta = {
   title: "How clinic assessments work",
   description:
     "From checking fees and registration to discussing your options with a specialist.",
@@ -67,12 +66,12 @@ export default function HowItWorks() {
               <p className="mt-2 max-w-prose2 leading-relaxed text-ink-soft">
                 {step.body}
               </p>
-              <Link
+              <a
                 className="link-underline mt-3 inline-block font-semibold"
                 href={step.href}
               >
                 {step.label}
-              </Link>
+              </a>
             </div>
           </li>
         ))}

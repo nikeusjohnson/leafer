@@ -1,7 +1,6 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import type { PageMeta } from "@/page-meta";
 
-export const metadata: Metadata = {
+export const metadata: PageMeta = {
   title: "Glossary",
   description:
     "Definitions of the terms used to describe clinic fees, registration and prescription services.",
@@ -73,9 +72,9 @@ export default function Glossary() {
           </div>
         ))}
       </dl>
-      <Link href="/guides" className="btn-secondary mt-10">
+      <a href="/guides" className="btn-secondary mt-10">
         Browse patient guides
-      </Link>
+      </a>
     </article>
   );
 }

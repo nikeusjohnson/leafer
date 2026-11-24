@@ -1,20 +1,21 @@
-"use client";
-
-import { Suspense } from "react";
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
+import { useEffect, useState } from "preact/hooks";
 import ClinicCard from "@/components/ClinicCard";
 import type { Clinic } from "@/data/clinics";
 import styles from "@/app/clinics/clinics.module.css";
 
-function Directory({
-  clinics,
-  queryString,
-}: {
-  clinics: Clinic[];
-  queryString: string;
-}) {
-  const params = new URLSearchParams(queryString);
+export default function ClinicBrowser({ clinics }: { clinics: Clinic[] }) {
+  const [query, setQuery] = useState("");
+  useEffect(() => {
+    const sync = () => setQuery(location.search);
+    sync();
+    window.addEventListener("popstate", sync);
+    window.addEventListener("pageshow", sync);
+    return () => {
+      window.removeEventListener("popstate", sync);
+      window.removeEventListener("pageshow", sync);
+    };
+  }, []);
+  const params = new URLSearchParams(query);
   const search = params.get("q") || "";
   const format = params.get("format") === "inperson" ? "inperson" : "all";
   const sort = params.get("sort") === "price" ? "price" : "name";
@@ -31,6 +32,7 @@ function Directory({
       else url.searchParams.delete(key);
     }
     window.history.replaceState(null, "", url);
+    setQuery(url.search);
   }
   function choose(clinic: Clinic) {
     const chosen = selection.some((c) => c.slug === clinic.slug);
@@ -83,7 +85,7 @@ function Directory({
             type="search"
             value={search}
             placeholder="Search by clinic name"
-            onChange={(e) => update({ q: e.target.value })}
+            onInput={(e) => update({ q: e.currentTarget.value })}
           />
         </label>
         <label>
@@ -91,7 +93,7 @@ function Directory({
           <select
             value={format}
             onChange={(e) =>
-              update({ format: e.target.value === "all" ? "" : e.target.value })
+              update({ format: e.currentTarget.value === "all" ? "" : e.currentTarget.value })
             }
           >
             <option value="all">All formats</option>
@@ -103,7 +105,7 @@ function Directory({
           <select
             value={sort}
             onChange={(e) =>
-              update({ sort: e.target.value === "name" ? "" : e.target.value })
+              update({ sort: e.currentTarget.value === "name" ? "" : e.currentTarget.value })
             }
           >
             <option value="name">Clinic name (A–Z)</option>
@@ -168,12 +170,12 @@ function Directory({
             </div>
           </div>
           {selection.length === 2 ? (
-            <Link
+            <a
               className="btn-primary"
               href={`/clinics/compare?a=${selection[0].slug}&b=${selection[1].slug}`}
             >
               Compare selected clinics
-            </Link>
+            </a>
           ) : (
             <span>Choose one more clinic</span>
           )}
@@ -219,9 +221,9 @@ function Directory({
               {results.map((c) => (
                 <tr key={c.slug}>
                   <th scope="row">
-                    <Link className={styles.link} href={`/clinics/${c.slug}`}>
+                    <a className={styles.link} href={`/clinics/${c.slug}`}>
                       {c.name}
-                    </Link>
+                    </a>
                   </th>
                   <td>
                     <strong>{c.initialFee}</strong>
@@ -237,16 +239,5 @@ function Directory({
         </div>
       )}
     </section>
-  );
-}
-function LinkedDirectory({ clinics }: { clinics: Clinic[] }) {
-  const params = useSearchParams();
-  return <Directory clinics={clinics} queryString={params.toString()} />;
-}
-export default function ClinicBrowser({ clinics }: { clinics: Clinic[] }) {
-  return (
-    <Suspense fallback={<Directory clinics={clinics} queryString="" />}>
-      <LinkedDirectory clinics={clinics} />
-    </Suspense>
   );
 }

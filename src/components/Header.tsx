@@ -1,8 +1,3 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
 import Logo from "./Logo";
 
 const links = [
@@ -12,35 +7,17 @@ const links = [
   ["/uk-law", "UK law"],
 ];
 
-export default function Header() {
-  const [open, setOpen] = useState(false);
-  const toggle = useRef<HTMLButtonElement>(null);
-  const pathname = usePathname();
-
-  useEffect(() => setOpen(false), [pathname]);
-  useEffect(() => {
-    if (!open) return;
-    const escape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setOpen(false);
-        toggle.current?.focus();
-      }
-    };
-    document.addEventListener("keydown", escape);
-    return () => document.removeEventListener("keydown", escape);
-  }, [open]);
-
+export default function Header({ pathname }: { pathname: string }) {
   return (
     <header className="masthead">
       <div className="site-wrap masthead-inner">
         <Logo />
         <button
           type="button"
-          ref={toggle}
           className="nav-toggle"
+          aria-label="Menu"
           aria-controls="site-nav"
-          aria-expanded={open}
-          onClick={() => setOpen(!open)}
+          aria-expanded="false"
         >
           <svg
             width="20"
@@ -49,24 +26,16 @@ export default function Header() {
             fill="none"
             aria-hidden="true"
           >
-            <path
-              d={open ? "m4 4 12 12M16 4 4 16" : "M2 5h16M2 10h16M2 15h16"}
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>{" "}
-          {open ? "Close" : "Menu"}
+            <path className="menu-bars" d="M3 5h14M3 10h14M3 15h14" />
+            <path className="menu-close" d="m4 4 12 12M16 4 4 16" />
+          </svg>
+          <span>Menu</span>
         </button>
-        <nav
-          className={`site-nav${open ? " is-open" : ""}`}
-          id="site-nav"
-          aria-label="Main navigation"
-        >
+        <nav className="site-nav" id="site-nav" aria-label="Main navigation">
           {links.map(([href, label]) => (
-            <Link
-              href={href}
+            <a
               key={href}
+              href={href}
               aria-current={
                 pathname === href
                   ? "page"
@@ -74,19 +43,22 @@ export default function Header() {
                     ? "location"
                     : undefined
               }
-              onClick={() => setOpen(false)}
             >
               {label}
-            </Link>
+              <span aria-hidden="true">›</span>
+            </a>
           ))}
-          <Link
-            className="nav-check"
-            href="/eligibility"
-            onClick={() => setOpen(false)}
-          >
-            Eligibility checklist
-          </Link>
         </nav>
+        <a
+          className="nav-check"
+          href="/eligibility"
+          aria-current={pathname === "/eligibility" ? "page" : undefined}
+        >
+          <svg width="17" height="17" viewBox="0 0 20 20" aria-hidden="true">
+            <path fill="currentColor" d="M7 1h6v6h6v6h-6v6H7v-6H1V7h6z" />
+          </svg>
+          Check eligibility
+        </a>
       </div>
     </header>
   );

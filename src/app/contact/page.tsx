@@ -1,8 +1,7 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import type { PageMeta } from "@/page-meta";
 import Eyebrow from "@/components/Eyebrow";
 
-export const metadata: Metadata = {
+export const metadata: PageMeta = {
   title: "Contact",
   description:
     "Spotted an error, a fee that's changed, or a clinic we've missed? Here's how to reach Leafer.",
@@ -71,13 +70,13 @@ export default function Contact() {
 
       <p className="mt-10 max-w-2xl text-[15px] leading-relaxed text-ink-muted">
         Not sure where to start? The{" "}
-        <Link href="/eligibility" className="link-underline">
+        <a href="/eligibility" className="link-underline">
           eligibility checklist
-        </Link>{" "}
+        </a>{" "}
         takes a minute, and the{" "}
-        <Link href="/clinics" className="link-underline">
+        <a href="/clinics" className="link-underline">
           clinic comparison
-        </Link>{" "}
+        </a>{" "}
         shows who&apos;s who.
       </p>
     </section>

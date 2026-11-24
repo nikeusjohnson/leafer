@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
-import Image from "next/image";
+import type { PageMeta } from "@/page-meta";
+import Image from "@/components/Image";
 import GuideTile from "@/components/GuideTile";
 import { guideTopics, guides } from "@/data/guides";
 import styles from "./guides.module.css";
 
-export const metadata: Metadata = {
+export const metadata: PageMeta = {
   title: "Patient guides",
   description:
     "Compare clinic fees, plan a transfer, prepare for an appointment and find guidance on living with a prescription.",

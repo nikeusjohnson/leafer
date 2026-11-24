@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+import type { PageMeta } from "@/page-meta";
 import FaqList from "@/components/FaqList";
 import { faqs } from "@/data/faqs";
 
-export const metadata: Metadata = {
+export const metadata: PageMeta = {
   title: "Patient questions",
   description:
     "Answers on fees, clinic registration and specialist appointments, with sources for further reading.",

@@ -1,0 +1,46 @@
+{
+  "id": "/",
+  "name": "Leafer — UK Clinic Comparisons",
+  "short_name": "Leafer",
+  "lang": "en-GB",
+  "description": "Compare UK clinic fees and read patient guides.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#156234",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Compare clinics",
+      "url": "/clinics"
+    },
+    {
+      "name": "Check eligibility",
+      "url": "/eligibility"
+    },
+    {
+      "name": "Patient guides",
+      "url": "/guides"
+    }
+  ]
+}

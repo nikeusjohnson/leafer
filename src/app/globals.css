@@ -154,27 +154,6 @@
   width: 100%;
   height: auto;
 }
-.site-nav {
-  display: flex;
-  align-items: center;
-  gap: clamp(1rem, 2.7vw, 2.6rem);
-  font-size: 0.97rem;
-  font-weight: 700;
-}
-.site-nav a:hover,
-.site-nav a[aria-current] {
-  text-decoration: underline;
-  text-underline-offset: 0.3em;
-}
-.site-nav .nav-check {
-  border: 1.6px solid #166340;
-  border-radius: 2rem;
-  padding: 0.68rem 1.35rem;
-  color: #105638;
-}
-.nav-toggle {
-  display: none;
-}
 .home-hero {
   background: #cbf2e0;
   overflow: hidden;
@@ -380,9 +359,6 @@
   .site-wrap {
     width: calc(100% - 3rem);
   }
-  .site-nav {
-    gap: 1rem;
-  }
   .hero-grid {
     min-height: 25rem;
   }
@@ -399,36 +375,6 @@
   }
   .wordmark {
     width: 8.4rem;
-  }
-  .nav-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    min-height: 44px;
-    font-weight: 700;
-  }
-  .site-nav {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 100%;
-    padding: 1rem 1.25rem;
-    background: white;
-    box-shadow: 0 8px 14px #12433215;
-    align-items: stretch;
-    display: none;
-  }
-  .site-nav.is-open {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-  .site-nav a {
-    padding: 0.7rem 0;
-  }
-  .site-nav .nav-check {
-    align-self: flex-start;
-    margin-block: 0.5rem;
   }
   .hero-grid {
     grid-template-columns: 1fr;

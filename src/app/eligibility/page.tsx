@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import type { PageMeta } from "@/page-meta";
 import EligibilityChecker from "@/components/EligibilityChecker";
 
-export const metadata: Metadata = {
+export const metadata: PageMeta = {
   title: "Eligibility checklist",
   description:
     "Get ready to discuss eligibility with a UK clinic. Consider your history, records and questions before booking.",
@@ -21,7 +21,7 @@ export default function Eligibility() {
           clinician.
         </p>
       </div>
-      <div className="mt-10">
+      <div id="eligibility-tool" className="mt-10">
         <EligibilityChecker />
       </div>
       <p className="mx-auto mt-6 max-w-xl text-center text-[14px] text-ink-muted">

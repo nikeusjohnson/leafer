@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+import type { PageMeta } from "@/page-meta";
 import ArticleSections from "@/components/ArticleSections";
 import { references } from "@/data/guides";
 
-export const metadata: Metadata = {
+export const metadata: PageMeta = {
   title: "UK medical cannabis law",
   description:
     "Specialist prescribing, evidence of a prescription and the rules on driving and travel.",

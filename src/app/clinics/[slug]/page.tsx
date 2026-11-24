@@ -1,6 +1,4 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound, permanentRedirect } from "next/navigation";
+import type { PageMeta } from "@/page-meta";
 import {
   clinics,
   clinicAliases,
@@ -10,20 +8,19 @@ import {
 } from "@/data/clinics";
 import styles from "../clinics.module.css";
 
-export function generateStaticParams() {
+export function slugs() {
   return [
     ...clinics.map((clinic) => clinic.slug),
-    ...Object.keys(clinicAliases),
     ...Object.keys(previousListings),
   ].map((slug) => ({ slug }));
 }
 
-type PageProps = { params: Promise<{ slug: string }> };
+type PageProps = { params: { slug: string } };
 
-export async function generateMetadata({
+export function pageMeta({
   params,
-}: PageProps): Promise<Metadata> {
-  const { slug } = await params;
+}: PageProps): PageMeta {
+  const { slug } = params;
   const clinic = getClinic(clinicAliases[slug] ?? slug);
   if (clinic)
     return {
@@ -42,19 +39,17 @@ export async function generateMetadata({
     : {};
 }
 
-export default async function ClinicPage({ params }: PageProps) {
-  const { slug } = await params;
-  if (Object.hasOwn(clinicAliases, slug))
-    permanentRedirect(`/clinics/${clinicAliases[slug]}`);
+export default function ClinicPage({ params }: PageProps) {
+  const { slug } = params;
   const previous = Object.hasOwn(previousListings, slug)
     ? previousListings[slug]
     : null;
   if (previous)
     return (
       <article className={styles.wrap + " " + styles.status}>
-        <Link href="/clinics" className={styles.link}>
+        <a href="/clinics" className={styles.link}>
           All clinics
-        </Link>
+        </a>
         <h1>{previous.name}</h1>
         <p className={styles.lead}>{previous.note}</p>
         <a className={styles.link} href={previous.source}>
@@ -64,13 +59,13 @@ export default async function ClinicPage({ params }: PageProps) {
     );
 
   const clinic = getClinic(slug);
-  if (!clinic) notFound();
+  if (!clinic) throw new Error("Missing page record");
   return (
     <article>
       <header className={styles.banner}>
         <div className={styles.wrap}>
           <nav aria-label="Breadcrumb" className={styles.crumb}>
-            <Link href="/clinics">Clinic comparison</Link>
+            <a href="/clinics">Clinic comparison</a>
             <span aria-hidden="true">/</span>
             {clinic.name}
           </nav>
@@ -133,12 +128,12 @@ export default async function ClinicPage({ params }: PageProps) {
             View the {clinic.regulator} record
           </a>
           <div className={styles.reviews}>
-            <Link
+            <a
               href={`/clinics/compare?a=${clinic.slug}`}
               className={styles.link}
             >
               Compare {clinic.name} with another clinic
-            </Link>
+            </a>
           </div>
           {clinic.reviewsUrl && (
             <div className={styles.reviews}>
