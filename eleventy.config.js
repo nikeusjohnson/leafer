@@ -2,9 +2,8 @@ import { createRequire } from "node:module";
 import { readFile } from "node:fs/promises";
 import { prepare } from "./scripts/assets.mjs";
 import { createShareArt, createIcons } from "./scripts/share-art.mjs";
+import { htmlFile } from "./scripts/page-file.mjs";
 const require = createRequire(import.meta.url);
-const htmlFile = (route) =>
-  route === "/" ? "index.html" : route.slice(1) + ".html";
 
 export default function (config) {
   let site, assets, images;

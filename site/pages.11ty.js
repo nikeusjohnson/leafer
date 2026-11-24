@@ -1,9 +1,10 @@
+import { htmlFile } from "../scripts/page-file.mjs";
+
 export default class Pages {
   data() {
     return {
       pagination: { data: "routePaths", size: 1, alias: "route" },
-      permalink: ({ route }) =>
-        route === "/" ? "index.html" : route.slice(1) + ".html",
+      permalink: ({ route }) => htmlFile(route),
       eleventyExcludeFromCollections: true,
     };
   }

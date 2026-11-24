@@ -26,6 +26,7 @@ export const config = {
   rewrites: [
     ...slugs.flatMap((a) => slugs.map((b) => comparison(a, b))),
     ...slugs.flatMap((slug) => [comparison(slug, ""), comparison("", slug)]),
+    { source: "/clinics/compare", destination: "/pairs/_/_" },
   ],
   headers: ["/assets/:file*", "/share/:file*"].map((source) => ({
     source,
