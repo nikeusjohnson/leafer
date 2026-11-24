@@ -1,12 +1,17 @@
 import { clinics, clinicAliases } from "./src/data/clinics.ts";
-const slugs = clinics.map((c) => c.slug).join("|");
-const selected = (key: string, name: string) => ({
-  type: "query" as const,
-  key,
-  value: "(?<" + name + ">" + slugs + ")",
-});
-const first = selected("a", "first"),
-  second = selected("b", "second");
+
+const slugs = clinics.map((c) => c.slug);
+function comparison(a: string, b: string) {
+  const has = Object.entries({ a, b })
+    .filter(([, value]) => value)
+    .map(([key, value]) => ({ type: "query" as const, key, value }));
+  return {
+    source: "/clinics/compare",
+    has,
+    destination: "/pairs/" + (a || "_") + "/" + (b || "_"),
+  };
+}
+
 export const config = {
   framework: null,
   buildCommand: "npm run build",
@@ -19,21 +24,8 @@ export const config = {
     permanent: true,
   })),
   rewrites: [
-    {
-      source: "/clinics/compare",
-      has: [first, second],
-      destination: "/pairs/:first/:second",
-    },
-    {
-      source: "/clinics/compare",
-      has: [first],
-      destination: "/pairs/:first/_",
-    },
-    {
-      source: "/clinics/compare",
-      has: [second],
-      destination: "/pairs/_/:second",
-    },
+    ...slugs.flatMap((a) => slugs.map((b) => comparison(a, b))),
+    ...slugs.flatMap((slug) => [comparison(slug, ""), comparison("", slug)]),
   ],
   headers: ["/assets/:file*", "/share/:file*"].map((source) => ({
     source,
